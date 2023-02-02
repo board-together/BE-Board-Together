@@ -21,3 +21,15 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+#simplecov
+coverage
+
+#fixture files
+/spec/fixtures
+
+#individual settings
+.vscode/settings.json
+
+#DS_Store
+.DS_Store
