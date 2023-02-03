@@ -85,9 +85,9 @@ Rails backend, React front end (etc)
 <!-- Database Schema -->
 ### Database Schema
 
-image of schema here
 
-<img src="#" alt="Database-Schema">
+
+<img src="public/Screenshot 2023-02-02 at 2.58.15 PM.png" alt="Database-Schema">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
