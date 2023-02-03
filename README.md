@@ -85,9 +85,9 @@ Rails backend, React front end (etc)
 <!-- Database Schema -->
 ### Database Schema
 
-image of schema here
 
-<img src="#" alt="Database-Schema">
+
+<img src="public/Screenshot 2023-02-02 at 2.58.15 PM.png" alt="Database-Schema">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -112,6 +112,8 @@ Bacon ipsum dolor amet doner filet mignon flank pork ham kielbasa chicken jerky 
 
 <b>Required API keys</b>:
 * Sign up for a <a href="https://www.boardgameatlas.com/api/docs/apps">Board Game Atlas client ID</a>
+<li> In your <code>application.yml</code> file:</li>
+          <ul> - Assign your Board Game Atlas api key to a variable (this will need to be passed in as query params with key <code>client_id</code>)</ul>
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
