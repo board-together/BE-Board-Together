@@ -8,8 +8,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/Consultancy-2208">
-    <img src="lib/assets/consultancy.jpeg" alt="Logo" width="200" height="200">
+  <a href="https://github.com/board-together">
+    <img src="#" alt="Logo" width="200" height="200">
   </a>
 
   <h1 align="center">Board (games) Together!</h3>
