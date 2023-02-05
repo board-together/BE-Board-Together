@@ -1,6 +1,6 @@
 class GameService
   def search(game)
-    get_url("/api/search", { search: game })
+    get_url("/api/search", { name: game })
   end
 
   def get_url(url, params = nil)
