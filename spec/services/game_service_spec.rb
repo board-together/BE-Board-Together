@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'GameService' do
   describe '#search' do
     describe 'happy path' do
-      it 'returns a list of search results' do
+      it 'returns a list of search results', :vcr do
         game = 'catan'
 
         search_results = GameService.new.search(game)
