@@ -87,7 +87,7 @@ Rails backend, React front end (etc)
 
 
 
-<img src="public/Screenshot 2023-02-02 at 2.58.15 PM.png" alt="Database-Schema">
+<img src="public/Schema 2-5-23.png" alt="Database-Schema">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
