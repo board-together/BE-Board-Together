@@ -13,7 +13,7 @@ class BoardGame
               :thumb_url
 
   def initialize(data)
-    @id = data[:board_game_atlas_id]
+    @board_game_atlas_id = data[:board_game_atlas_id]
     @handle = data[:handle]
     @url = data[:url]
     @year_published = data[:year_published]
