@@ -87,7 +87,7 @@ Rails backend, React front end (etc)
 
 
 
-<img src="public/Schema 2-5-23.png" alt="Database-Schema">
+<img src="public/Schema 2-6-23.png" alt="Database-Schema">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -152,29 +152,29 @@ See the [open issues](https://github.com/board-together/BE-Board-Together/issues
 
 <table>
   <tr>
-    <td><img src="https://avatars.githubusercontent.com/u/60988144?v=4" width='150'></td>
-    <td><img src="https://avatars.githubusercontent.com/u/101418582?s=150&v=4"></td>
     <td><img src="https://avatars.githubusercontent.com/u/102780642?s=150&v=4"></td>
+    <td><img src="https://avatars.githubusercontent.com/u/101418582?s=150&v=4"></td>
+    <td><img src="https://avatars.githubusercontent.com/u/60988144?s=150&v=4"></td>
     <td><img src="https://avatars.githubusercontent.com/u/35391349?s=150&v=4"></td>
   </tr>
   <tr>
-    <td>Darby Smith</td>
-    <td>Bryan Keener</td>
     <td>Annie Pulzone</td>
+    <td>Bryan Keener</td>
+    <td>Darby Smith</td>
     <td>Michael Marchand</td>
   </tr>
   <tr>
     <td>
-      <a href="https://github.com/DarbySmith">GitHub</a><br>
-      <a href="https://www.linkedin.com/in/darby-m-smith/">LinkedIn</a>
+      <a href="https://github.com/ajpulzone">GitHub</a><br>
+      <a href="https://www.linkedin.com/in/annie-pulzone/">LinkedIn</a>
     </td>
     <td>
       <a href="https://github.com/bkeener7">GitHub</a><br>
       <a href="https://www.linkedin.com/in/bkeener/">LinkedIn</a>
     </td>
     <td>
-      <a href="https://github.com/ajpulzone">GitHub</a><br>
-      <a href="https://www.linkedin.com/in/annie-pulzone/">LinkedIn</a>
+      <a href="https://github.com/DarbySmith">GitHub</a><br>
+      <a href="https://www.linkedin.com/in/darby-m-smith/">LinkedIn</a>
     </td>
     <td>
       <a href="https://github.com/marchandMD">GitHub</a><br>
