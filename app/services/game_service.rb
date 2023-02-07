@@ -1,6 +1,6 @@
 class GameService
   def search(game)
-    get_url("/api/search", { name: game })
+    get_url('/api/search', { name: game })
   end
 
   def get_url(url, params = nil)
@@ -9,7 +9,7 @@ class GameService
   end
 
   def conn
-    Faraday.new(url: "https://api.boardgameatlas.com") do |faraday|
+    Faraday.new(url: 'https://api.boardgameatlas.com') do |faraday|
       faraday.params['client_id'] = ENV.fetch('client_id')
     end
   end
