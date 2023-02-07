@@ -32,9 +32,5 @@ describe 'GameService' do
         end
       end
     end
-
-    describe 'sad path' do
-      # code here
-    end
   end
 end
