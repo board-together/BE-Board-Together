@@ -4,7 +4,7 @@ describe 'BoardGame' do
   context "#initialize" do
     it 'exists, with attributes' do
       attributes = {
-        id: "foo_string",
+        board_game_atlas_id: "foo_string",
         handle: "catan",
         url: "foo_url",
         year_published: 1999,
@@ -21,7 +21,7 @@ describe 'BoardGame' do
       board_game = BoardGame.new(attributes)
 
       expect(board_game).to be_a BoardGame
-      expect(board_game.id).to eq('foo_string')
+      expect(board_game.board_game_atlas_id).to eq('foo_string')
       expect(board_game.handle).to eq('catan')
       expect(board_game.year_published).to eq(1999)
       expect(board_game.min_players).to eq(1)
