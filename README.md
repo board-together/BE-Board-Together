@@ -76,14 +76,14 @@ Shankle filet mignon prosciutto doner. Tongue pancetta doner, pig landjaeger ven
 
 Rails backend, React front end (etc)
 
-<img src="public/tech-stack.png" alt="Tech-Stack" width="60%" height="60%">
+<img src="public/tech-stack.png" alt="Tech-Stack" width="80%" height="80%">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- Database Schema -->
 ### Database Schema
 
-<img src="public/Schema 2-6-23.png" alt="Database-Schema" width="60%" height="60%">
+<img src="public/Schema 2-6-23.png" alt="Database-Schema" width="90%" height="90%">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
