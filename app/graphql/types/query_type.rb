@@ -22,7 +22,7 @@ module Types
       User.find_by(username: username)
     end
 
-    def search_game(name:)
+    def search_games(name:)
       GameFacade.search(name)
     end
   end
