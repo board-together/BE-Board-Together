@@ -22,31 +22,29 @@
 
 <!-- TABLE OF CONTENTS -->
 <h3>
-  <details>
-    <summary>Table of Contents</summary>
-    <ol>
-      <li>
-        <a href="#about-the-project">About The Project</a>
-        <ul>
-          <li><a href="#heroku-information">Heroku Information</a></li>
-          <li><a href="#built-with">Built With</a></li>
-          <li><a href="#database-schema">Database Schema</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#getting-started">Getting Started</a>
-        <ul>
-            <li><a href="#repositories">Repositories</a></li>
-            <li><a href="#back-end-repository-installation">Back-End Repository Installation</a></li>
-            <li><a href="#endpoints">Endpoints</a></li>
-        </ul>
-      </li>
-      <li><a href="#roadmap">Roadmap</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#acknowledgments">Acknowledgments</li>
-      <li><a href="#license">License</a></li></a>
-    </ol>
-  </details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#heroku-information">Heroku Information</a></li>
+        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#database-schema">Database Schema</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+          <li><a href="#repositories">Repositories</a></li>
+          <li><a href="#back-end-repository-installation">Back-End Repository Installation</a></li>
+          <li><a href="#endpoints">Endpoints</a></li>
+      </ul>
+    </li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</li>
+    <li><a href="#license">License</a></li></a>
+  </ol>
 </h3>
 
 <!-- ABOUT THE PROJECT -->
@@ -87,7 +85,7 @@ Rails backend, React front end (etc)
 
 
 
-<img src="public/Schema 2-6-23.png" alt="Database-Schema">
+<img src="public/Schema 2-6-23.png" alt="Database-Schema" width="60%" height="60%">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
