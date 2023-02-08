@@ -4,9 +4,9 @@ describe 'BoardGame' do
   describe '#initialize' do
     it 'exists, with attributes' do
       attributes = {
-        id: "foo_string",
-        name: "catan",
-        url: "foo_url",
+        id: 'foo_string',
+        name: 'catan',
+        url: 'foo_url',
         year_published: 1999,
         min_players: 1,
         max_players: 2,
