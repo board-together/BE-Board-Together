@@ -10,7 +10,7 @@ module Types
       argument :username, String, required: true
     end
 
-    field :search_games, [Types::GameType], null:false do
+    field :search_games, [Types::GameType], null: false do
       argument :name, String, required: true
     end
 
