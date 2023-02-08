@@ -1,13 +1,9 @@
-# frozen_string_literal: true
+class Types::UserType < Types::BaseObject
+  field :created_at, GraphQL::Types::ISO8601DateTime, null: false
+  field :games, [Types::GameType], null: true
+  field :id, ID, null: false
+  field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
+  field :username, String, null: false
 
-module Types
-  class UserType < Types::BaseObject
-    field :created_at, GraphQL::Types::ISO8601DateTime, null: false
-    field :games, [Types::GameType], null: true
-    field :id, ID, null: false
-    field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
-    field :username, String, null: false
-
-    delegate :games, to: :object
-  end
+  delegate :games, to: :object
 end
