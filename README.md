@@ -22,31 +22,29 @@
 
 <!-- TABLE OF CONTENTS -->
 <h3>
-  <details>
-    <summary>Table of Contents</summary>
-    <ol>
-      <li>
-        <a href="#about-the-project">About The Project</a>
-        <ul>
-          <li><a href="#heroku-information">Heroku Information</a></li>
-          <li><a href="#built-with">Built With</a></li>
-          <li><a href="#database-schema">Database Schema</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#getting-started">Getting Started</a>
-        <ul>
-            <li><a href="#repositories">Repositories</a></li>
-            <li><a href="#back-end-repository-installation">Back-End Repository Installation</a></li>
-            <li><a href="#endpoints">Endpoints</a></li>
-        </ul>
-      </li>
-      <li><a href="#roadmap">Roadmap</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#acknowledgments">Acknowledgments</li>
-      <li><a href="#license">License</a></li></a>
-    </ol>
-  </details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#heroku-information">Heroku Information</a></li>
+        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#database-schema">Database Schema</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+          <li><a href="#repositories">Repositories</a></li>
+          <li><a href="#back-end-repository-installation">Back-End Repository Installation</a></li>
+          <li><a href="#available-endpoints">Available Endpoints</a></li>
+      </ul>
+    </li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</li>
+    <li><a href="#license">License</a></li></a>
+  </ol>
 </h3>
 
 <!-- ABOUT THE PROJECT -->
@@ -78,7 +76,7 @@ Shankle filet mignon prosciutto doner. Tongue pancetta doner, pig landjaeger ven
 
 Rails backend, React front end (etc)
 
-<img src="lib/assets/tech-stack.png" alt="Tech-Stack">
+<img src="public/tech-stack.png" alt="Tech-Stack" width="60%" height="60%">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -87,7 +85,7 @@ Rails backend, React front end (etc)
 
 
 
-<img src="public/Schema 2-6-23.png" alt="Database-Schema">
+<img src="public/Schema 2-6-23.png" alt="Database-Schema" width="60%" height="60%">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -118,19 +116,322 @@ Bacon ipsum dolor amet doner filet mignon flank pork ham kielbasa chicken jerky 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- Endpoints -->
-### Endpoints
+<!-- Available Endpoints -->
+## Available Endpoints
 
-TBD
+Endpoints are run through GraphQL queries. Expand a section below for query requests and expected responses. 
 
-<b>An example request would be:</b>
+### User Queries
+<details close>
+  <summary>Find All Users</summary><br>
 
-`https://stormy-harbor-06090.herokuapp.com/api/v1/alert_mailer?email=<your_email>&name=<your_name>`
+Returns a list of all current users in database.<br>
 
-<b>An example response would be:</b>
+```json
+query {
+    users {
+        id
+        username
+    }  
+}
+```
 
- `{ data: 'No Current Alerts' }` or `{ data: 'Current Alerts in Your Area' }`
+Expected Response:
 
+ ```json
+{
+    "data": {
+        "users": [
+            {
+                "id": 1,
+                "username": "Pickafloof"
+            },
+            {
+                "id": 2,
+                "username": "Floofything"
+            }
+        ]  
+    }
+}
+```
+</details><br>
+
+<details close>
+  <summary>Find a Specific User</summary><br>
+
+Return information about a specific user in the database.<br>
+
+```json
+query {
+    user(username: "Pickafloof") {
+        id
+        username
+        games {
+            id
+            boardGameAtlasId
+            url
+            name
+            yearPublished
+            minPlayers
+            maxPlayers
+            minPlaytime
+            maxPlaytime
+            minAge
+            description
+            thumbUrl
+            imageUrl 
+        }
+    }
+}
+```
+
+Expected Response:
+
+ ```json
+{
+    "data": {
+        "user": {
+            "id": "1",
+            "username": "Pickafloof",
+            "games": [
+                {
+                    "id": 1,
+                    "board_game_atlas_id": "OIXt3DmJU0",
+                    "url": "https://www.boardgameatlas.com/game/OIXt3DmJU0/catan",
+                    "name": "Catan",
+                    "year_published": 1995,
+                    "min_players": 3,
+                    "max_players": 4,
+                    "min_playtime": 45,
+                    "max_playtime": 90,
+                    "min_age": 10,
+                    "description": "<p>The women and men of your expedition build the first two settlements. Fortunately, the land is rich in natural resources. You build roads and new settlements that eventually become cities. Will you succeed in gaining supremacy on Catan? Barter trade dominates the scene. Some resources you have in abundance, other resources are scarce. Ore for wool, brick for lumber - you trade according to what is needed for your current building projects. Proceed strategically! If you found your settlements in the right places and skillfully trade your resources, then the odds will be in your favor. But your opponents are smart too.</p>\r\n<p>To begin the game, we build the game board using hexagonal terrain tiles. Catan is born - a beautiful island with mountains, pastures, hills, fields, and forests, surrounded by the sea.</p>\r\n<p>Each of us places two small houses on spaces where three terrain hexes meet. They are our starting settlements.</p>\r\n<p>And so it begins. I roll two dice. An “11”! Each terrain hex is marked with a die roll number. Each player who owns a settlement adjacent to a terrain hex marked with the number rolled receives a resource produced by this hex. Hills produce brick, forests produce lumber, mountains produce ore, fields produce grain, and pastures produce wool.</p>\r\n<p>We use these resources to expand across Catan: we build roads and new settlements, or we upgrade our existing settlements to cities. For example, a road costs 1 brick and 1 lumber. If we do not have the necessary resources, we can acquire them by trading with our opponents.</p>\r\n<p>Each settlement is worth 1 victory point and each city is worth 2 victory points. If you expand cleverly, you may be the first player to reach 10 victory points and thus win the game!</p>",
+                    "thumb_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1629324722072.jpg",
+                    "image_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1629324722072.jpg",
+                },
+                {
+                    "id": 2,
+                    "board_game_atlas_id": "E5TYKwLTf0",
+                    "name": "Catan: Cities & Knights",
+                    "year_published": 1998,
+                    "min_players": 3,
+                    "max_players": 4,
+                    "min_playtime": 60,
+                    "max_playtime": 90,
+                    "min_age": 10,
+                    "description": "Dark clouds gather over the once peaceful landscape. Wild barbarians, lured by Catan’s wealth and power, maneuver to attack. Their massive warships loom against the bright orange horizon. You must be strong! Barbarians attack the weakest targets, and the victim of their onslaught will be the player who contributes the least to the defense of Catan.<br /><br /> Don’t take any chances! Field your knights!<br /><br /> In <b>Catan: Cities &amp; Knights</b> you engage in the defense of Catan and compete to build the three great metropolises of Catan. Each of these magnificent urban centers is even more valuable than a city. They’re also immune to the dangerous barbarians. Invest in city improvements, which you acquire using three commodities of trade: coin, paper, and cloth. If you improve your culture, muster your knights, and enrich your fine cities, you will be the master of the great realm of Catan!<br /><br /><b> Components:</b><br /> 36 Commodity Cards<br /> 54 Progress Cards<br /> 6 Victory Point Cards<br /> 3 Wooden Metropolis Pieces<br /> 1 Wooden Merchant Figure<br /> 1 Custom Event Die<br /> 1 Wooden Barbarian Ship<br /> 24 Wooden Knights<br /> 12 City Walls<br /> 4 Development Flip-Charts<br /> 1 Sea Frame Piece<br /> 1 Rulebook<br />",
+                    "thumb_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1559257359245-51DYsPZcYyL.jpg",
+                    "image_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1559257359245-51DYsPZcYyL.jpg",
+                    "owned": "borrowed"
+                }
+            ]
+        }
+    }
+}
+```
+</details><br>
+
+<details close>
+  <summary>Create a New User</summary><br>
+
+Create a new user in the database.<br>
+
+```json
+mutation {
+    creatUser(input:{username: "Foofything"}) {
+        user {
+            username
+        }
+        errors
+    }
+}
+```
+
+Expected Response:
+
+ ```json
+{
+    "data": {
+        "user": {
+            "username": "Floofything"
+        },
+        "errors": []
+    }
+}
+```
+</details><br>
+
+<details close>
+  <summary>Destroy a User's Game</summary><br>
+
+Delete a game from a user's owned games list.<br>
+
+```json
+mutation {
+    destroyUserGame(input:{user_id: 1, game_id: 1}) {
+        user_id
+        game_id
+    }
+}
+```
+
+Expected Response:
+
+ ```json
+{
+    "data": {
+        "destroyUserGame": {
+            "user_id": 1,
+            "game_id": 1
+        }
+    }
+}
+```
+</details><br>
+
+### Search Queries
+
+<details close>
+  <summary>Search for Games</summary><br>
+
+Search for a game matching user input.<br>
+
+```json
+query {
+    games(name: "Catan") {
+        board_game_atlas_id
+        url
+        name
+        year_published
+        min_players
+        max_players
+        min_playtime
+        max_playtime
+        min_age
+        description
+        thumb_url
+        image_url
+    }
+}
+```
+
+Expected Response:
+
+ ```json
+{
+    "data": {
+        "games": [
+            {
+                "board_game_atlas_id": "OIXt3DmJU0",
+                "url": "https://www.boardgameatlas.com/game/OIXt3DmJU0/catan",
+                "name": "Catan",
+                "year_published": 1995,
+                "min_players": 3,
+                "max_players": 4,
+                "min_playtime": 45,
+                "max_playtime": 90,
+                "min_age": 10,
+                "description": "<p>The women and men of your expedition build the first two settlements. Fortunately, the land is rich in natural resources. You build roads and new settlements that eventually become cities. Will you succeed in gaining supremacy on Catan? Barter trade dominates the scene. Some resources you have in abundance, other resources are scarce. Ore for wool, brick for lumber - you trade according to what is needed for your current building projects. Proceed strategically! If you found your settlements in the right places and skillfully trade your resources, then the odds will be in your favor. But your opponents are smart too.</p>\r\n<p>To begin the game, we build the game board using hexagonal terrain tiles. Catan is born - a beautiful island with mountains, pastures, hills, fields, and forests, surrounded by the sea.</p>\r\n<p>Each of us places two small houses on spaces where three terrain hexes meet. They are our starting settlements.</p>\r\n<p>And so it begins. I roll two dice. An “11”! Each terrain hex is marked with a die roll number. Each player who owns a settlement adjacent to a terrain hex marked with the number rolled receives a resource produced by this hex. Hills produce brick, forests produce lumber, mountains produce ore, fields produce grain, and pastures produce wool.</p>\r\n<p>We use these resources to expand across Catan: we build roads and new settlements, or we upgrade our existing settlements to cities. For example, a road costs 1 brick and 1 lumber. If we do not have the necessary resources, we can acquire them by trading with our opponents.</p>\r\n<p>Each settlement is worth 1 victory point and each city is worth 2 victory points. If you expand cleverly, you may be the first player to reach 10 victory points and thus win the game!</p>",
+                "thumb_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1629324722072.jpg",
+                "image_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1629324722072.jpg"
+            },
+            {
+                "board_game_atlas_id": "E5TYKwLTf0",
+                "name": "Catan: Cities & Knights",
+                "year_published": 1998,
+                "min_players": 3,
+                "max_players": 4,
+                "min_playtime": 60,
+                "max_playtime": 90,
+                "min_age": 10,
+                "description": "Dark clouds gather over the once peaceful landscape. Wild barbarians, lured by Catan’s wealth and power, maneuver to attack. Their massive warships loom against the bright orange horizon. You must be strong! Barbarians attack the weakest targets, and the victim of their onslaught will be the player who contributes the least to the defense of Catan.<br /><br /> Don’t take any chances! Field your knights!<br /><br /> In <b>Catan: Cities &amp; Knights</b> you engage in the defense of Catan and compete to build the three great metropolises of Catan. Each of these magnificent urban centers is even more valuable than a city. They’re also immune to the dangerous barbarians. Invest in city improvements, which you acquire using three commodities of trade: coin, paper, and cloth. If you improve your culture, muster your knights, and enrich your fine cities, you will be the master of the great realm of Catan!<br /><br /><b> Components:</b><br /> 36 Commodity Cards<br /> 54 Progress Cards<br /> 6 Victory Point Cards<br /> 3 Wooden Metropolis Pieces<br /> 1 Wooden Merchant Figure<br /> 1 Custom Event Die<br /> 1 Wooden Barbarian Ship<br /> 24 Wooden Knights<br /> 12 City Walls<br /> 4 Development Flip-Charts<br /> 1 Sea Frame Piece<br /> 1 Rulebook<br />",
+                "thumb_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1559257359245-51DYsPZcYyL.jpg",
+                "image_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1559257359245-51DYsPZcYyL.jpg",
+            }
+        ]
+    }
+}  }
+}
+```
+</details><br>
+
+<details close>
+  <summary>Find a User's Games</summary><br>
+
+Find all games owned by a specific user.<br>
+
+```json
+query {
+    games(user: 1) {
+        id
+        type
+        attributes {
+            board_game_atlas_id
+            url
+            name
+            year_published
+            min_players
+            max_players
+            min_playtime
+            max_playtime
+            min_age
+            description
+            thumb_url
+            image_url
+        }
+    }
+}
+```
+
+Expected Response:
+
+ ```json
+{
+    "data": {
+        "games": [
+            {
+                "id": 1,
+                "type": "game",
+                "attributes": {
+                    "board_game_atlas_id": "OIXt3DmJU0",
+                    "url": "https://www.boardgameatlas.com/game/OIXt3DmJU0/catan",
+                    "name": "Catan",
+                    "year_published": 1995,
+                    "min_players": 3,
+                    "max_players": 4,
+                    "min_playtime": 45,
+                    "max_playtime": 90,
+                    "min_age": 10,
+                    "description": "<p>The women and men of your expedition build the first two settlements. Fortunately, the land is rich in natural resources. You build roads and new settlements that eventually become cities. Will you succeed in gaining supremacy on Catan? Barter trade dominates the scene. Some resources you have in abundance, other resources are scarce. Ore for wool, brick for lumber - you trade according to what is needed for your current building projects. Proceed strategically! If you found your settlements in the right places and skillfully trade your resources, then the odds will be in your favor. But your opponents are smart too.</p>\r\n<p>To begin the game, we build the game board using hexagonal terrain tiles. Catan is born - a beautiful island with mountains, pastures, hills, fields, and forests, surrounded by the sea.</p>\r\n<p>Each of us places two small houses on spaces where three terrain hexes meet. They are our starting settlements.</p>\r\n<p>And so it begins. I roll two dice. An “11”! Each terrain hex is marked with a die roll number. Each player who owns a settlement adjacent to a terrain hex marked with the number rolled receives a resource produced by this hex. Hills produce brick, forests produce lumber, mountains produce ore, fields produce grain, and pastures produce wool.</p>\r\n<p>We use these resources to expand across Catan: we build roads and new settlements, or we upgrade our existing settlements to cities. For example, a road costs 1 brick and 1 lumber. If we do not have the necessary resources, we can acquire them by trading with our opponents.</p>\r\n<p>Each settlement is worth 1 victory point and each city is worth 2 victory points. If you expand cleverly, you may be the first player to reach 10 victory points and thus win the game!</p>",
+                    "thumb_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1629324722072.jpg",
+                    "image_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1629324722072.jpg",
+                }
+            },
+            {
+                "id": 2,
+                "type": "game",
+                "attributes": {
+                    "board_game_atlas_id": "E5TYKwLTf0",
+                    "name": "Catan: Cities & Knights",
+                    "year_published": 1998,
+                    "min_players": 3,
+                    "max_players": 4,
+                    "min_playtime": 60,
+                    "max_playtime": 90,
+                    "min_age": 10,
+                    "description": "Dark clouds gather over the once peaceful landscape. Wild barbarians, lured by Catan’s wealth and power, maneuver to attack. Their massive warships loom against the bright orange horizon. You must be strong! Barbarians attack the weakest targets, and the victim of their onslaught will be the player who contributes the least to the defense of Catan.<br /><br /> Don’t take any chances! Field your knights!<br /><br /> In <b>Catan: Cities &amp; Knights</b> you engage in the defense of Catan and compete to build the three great metropolises of Catan. Each of these magnificent urban centers is even more valuable than a city. They’re also immune to the dangerous barbarians. Invest in city improvements, which you acquire using three commodities of trade: coin, paper, and cloth. If you improve your culture, muster your knights, and enrich your fine cities, you will be the master of the great realm of Catan!<br /><br /><b> Components:</b><br /> 36 Commodity Cards<br /> 54 Progress Cards<br /> 6 Victory Point Cards<br /> 3 Wooden Metropolis Pieces<br /> 1 Wooden Merchant Figure<br /> 1 Custom Event Die<br /> 1 Wooden Barbarian Ship<br /> 24 Wooden Knights<br /> 12 City Walls<br /> 4 Development Flip-Charts<br /> 1 Sea Frame Piece<br /> 1 Rulebook<br />",
+                    "thumb_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1559257359245-51DYsPZcYyL.jpg",
+                    "image_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1559257359245-51DYsPZcYyL.jpg",
+                    "owned": "borrowed"
+                }
+            }
+        ]
+    }
+}
+```
+</details><br>
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://www.google.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

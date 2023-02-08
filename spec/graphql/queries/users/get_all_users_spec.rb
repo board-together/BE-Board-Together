@@ -4,20 +4,20 @@ RSpec.describe Types::QueryType do
   describe 'display users' do
     it 'can query all users' do
       FactoryBot.create_list(:user, 10)
-    
+
       result = BoardTogetherSchema.execute(query).as_json
-      expect(result["data"]["users"].count).to eq(10)
+      expect(result['data']['users'].count).to eq(10)
     end
   end
 
   def query
     <<~GQL
-    {
-      users {
-        id
-        username
+      {
+        users {
+          id
+          username
+        }
       }
-    }
     GQL
   end
 end

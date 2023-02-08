@@ -8,8 +8,6 @@ module Types
     field :username, String, null: false
     field :games, [Types::GameType], null: true
 
-    def games
-      object.games
-    end
+    delegate :games, to: :object
   end
 end
