@@ -19,7 +19,7 @@ RSpec.describe Mutations::CreateUser, type: :request do
                           }
                         }
       expect(result).to eq(expected_result)
-    end
+    end 
   end
   
   def mutation
