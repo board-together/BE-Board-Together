@@ -7,5 +7,9 @@ module Types
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
     field :username, String, null: false
     field :games, [Types::GameType], null: true
+
+    def games
+      object.games
+    end
   end
 end
