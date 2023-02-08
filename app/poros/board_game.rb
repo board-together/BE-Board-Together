@@ -1,6 +1,6 @@
 class BoardGame
   attr_reader :board_game_atlas_id,
-              :handle,
+              :name,
               :url,
               :year_published,
               :min_players,
@@ -13,8 +13,8 @@ class BoardGame
               :thumb_url
 
   def initialize(data)
-    @board_game_atlas_id = data[:board_game_atlas_id]
-    @handle = data[:handle]
+    @board_game_atlas_id = data[:id]
+    @name = data[:name]
     @url = data[:url]
     @year_published = data[:year_published]
     @min_players = data[:min_players]
