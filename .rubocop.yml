@@ -66,3 +66,6 @@ RSpec/Rails/HttpStatus:
 
 Rails/HttpStatus: 
   Enabled: false
+
+Lint/UselessMethodDefinition:
+  Enabled: false
