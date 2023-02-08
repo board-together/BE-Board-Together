@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 describe 'GameFacade' do
   describe '#games' do
     it 'returns an Array of BoardGame objects', :vcr do
