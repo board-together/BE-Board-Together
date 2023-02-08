@@ -62,3 +62,6 @@ Rails/Output:
 
 RSpec/Rails/HttpStatus:
   Enabled: false
+
+Rails/HttpStatus: 
+  Enabled: false
