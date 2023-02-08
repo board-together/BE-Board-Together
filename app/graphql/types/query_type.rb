@@ -23,7 +23,7 @@ module Types
     end
 
     def search_games(name:)
-      GameFacade.search(name)
+      GameFacade.new.search(name)
     end
   end
 end
