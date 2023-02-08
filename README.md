@@ -83,8 +83,6 @@ Rails backend, React front end (etc)
 <!-- Database Schema -->
 ### Database Schema
 
-
-
 <img src="public/Schema 2-6-23.png" alt="Database-Schema" width="60%" height="60%">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -127,7 +125,7 @@ Endpoints are run through GraphQL queries. Expand a section below for query requ
 
 Returns a list of all current users in database.<br>
 
-```json
+```query
 query {
     users {
         id
@@ -161,7 +159,7 @@ Expected Response:
 
 Return information about a specific user in the database.<br>
 
-```json
+```query
 query {
     user(username: "Pickafloof") {
         id
@@ -236,7 +234,7 @@ Expected Response:
 
 Create a new user in the database.<br>
 
-```json
+```query
 mutation {
     creatUser(input:{username: "Foofything"}) {
         user {
@@ -266,7 +264,7 @@ Expected Response:
 
 Delete a game from a user's owned games list.<br>
 
-```json
+```query
 mutation {
     destroyUserGame(input:{user_id: 1, game_id: 1}) {
         user_id
@@ -296,7 +294,7 @@ Expected Response:
 
 Search for a game matching user input.<br>
 
-```json
+```query
 query {
     games(name: "Catan") {
         board_game_atlas_id
@@ -360,7 +358,7 @@ Expected Response:
 
 Find all games owned by a specific user.<br>
 
-```json
+```query
 query {
     games(user: 1) {
         id
