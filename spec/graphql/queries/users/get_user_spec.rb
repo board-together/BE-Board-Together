@@ -8,35 +8,35 @@ RSpec.describe Types::QueryType do
 
       result = BoardTogetherSchema.execute(query).as_json
 
-      expect(result["data"]["user"]).to have_key("username")
-      expect(result["data"]["user"]["username"]).to eq("bigfloof")
-      expect(result["data"]["user"]["games"]).to be_an(Array)
+      expect(result['data']['user']).to have_key('username')
+      expect(result['data']['user']['username']).to eq('bigfloof')
+      expect(result['data']['user']['games']).to be_an(Array)
     end
   end
 
   def query
     <<~GQL
-    {
-      user(username: "bigfloof") {
-        id
-        username
-        games {
+      {
+        user(username: "bigfloof") {
           id
-          boardGameAtlasId
-          url
-          name
-          yearPublished
-          minPlayers
-          maxPlayers
-          minPlaytime
-          maxPlaytime
-          minAge
-          description
-          thumbUrl
-          imageUrl
+          username
+          games {
+            id
+            boardGameAtlasId
+            url
+            name
+            yearPublished
+            minPlayers
+            maxPlayers
+            minPlaytime
+            maxPlaytime
+            minAge
+            description
+            thumbUrl
+            imageUrl
+          }
         }
       }
-    }
     GQL
   end
 end
