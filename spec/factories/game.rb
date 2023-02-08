@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :game do
+  factory :game, class: Game do
     board_game_atlas_id { Faker::Number.hexadecimal(digits: 6) }
     name { Faker::Game.title }
     min_players { Faker::Number.within(range: 1..2) }
