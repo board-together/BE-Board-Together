@@ -2,11 +2,11 @@
 
 module Types
   class UserType < Types::BaseObject
-    field :id, ID, null: false
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
+    field :games, [Types::GameType], null: true
+    field :id, ID, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
     field :username, String, null: false
-    field :games, [Types::GameType], null: true
 
     delegate :games, to: :object
   end
