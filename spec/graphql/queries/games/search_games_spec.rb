@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe Types::QueryType do
   describe 'find games' do
     it 'can query for games by name', :vcr do
-
       result = BoardTogetherSchema.execute(query).as_json
 
       expect(result['data']['searchGames'].count).to eq(25)

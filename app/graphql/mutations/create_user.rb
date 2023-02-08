@@ -1,27 +1,23 @@
-module Mutations
-  class CreateUser < Mutations::BaseMutation
-    argument :username, required: true
+class Mutations::CreateUser < Mutations::BaseMutation
+  argument :username, String, required: true
 
-    # type Types::UserType
+  # type Types::UserType
 
-    field :create_user, Types::UserType, null: false
-    field :errors, [String], null: false
+  field :errors, [String], null: false
+  field :user, Types::UserType, null: false
 
-    def resolve(username:)
-      new_user = User.new(
-        username: username
-      )
-      if new_user.save
-        { 
-          user: new_user,
-          errors: []
-        }
-      else 
-        {
-          user: nil,
-          errors: new_user.errors.full_messages
-        }
-      end
+  def resolve(username:)
+    new_user = User.new(username: username)
+    if new_user.save
+      {
+        user: new_user,
+        errors: []
+      }
+    else
+      {
+        user: nil,
+        errors: new_user.errors.full_messages.to_sentence
+      }
     end
   end
 end

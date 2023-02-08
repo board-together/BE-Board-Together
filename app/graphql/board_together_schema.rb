@@ -13,7 +13,7 @@ class BoardTogetherSchema < GraphQL::Schema
     # end
     super
   end
-  
+
   # Union and Interface Resolution
   def self.resolve_type(_abstract_type, _obj, _ctx)
     # TODO: Implement this method
