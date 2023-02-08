@@ -1,8 +1,6 @@
 class Mutations::CreateUser < Mutations::BaseMutation
   argument :username, String, required: true
 
-  # type Types::UserType
-
   field :errors, [String], null: false
   field :user, Types::UserType, null: false
 
