@@ -9,7 +9,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/board-together">
-    <img src="#" alt="Logo" width="200" height="200">
+    <img src="https://st3.depositphotos.com/20363444/31955/i/1600/depositphotos_319556144-stock-photo-bored-pensive-friends-sitting-together.jpg" alt="Logo">
   </a>
 
   <h1 align="center">Board (games) Together!</h3>
