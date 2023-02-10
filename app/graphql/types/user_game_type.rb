@@ -5,4 +5,8 @@ class Types::UserGameType < Types::BaseObject
   field :status, Integer
   field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
   field :user_id, Integer
+  field :game, Types::GameType, null: false
+  field :borrower_id, Integer, null: true
+
+  delegate :game, to: :object
 end
