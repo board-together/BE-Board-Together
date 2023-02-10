@@ -52,9 +52,7 @@
 
 ![Product Demo](lib/assets/demo.gif)
 
-Bacon ipsum dolor amet doner filet mignon flank pork ham kielbasa chicken jerky sirloin short ribs rump turducken. Kevin leberkas andouille, alcatra bresaola burgdoggen cow ball tip shankle. Meatloaf prosciutto bacon beef pork belly, boudin ball tip cupim kielbasa turducken pork loin landjaeger brisket buffalo. Short loin brisket drumstick salami cow shank pastrami pig bacon alcatra frankfurter picanha ham hock spare ribs tenderloin. T-bone brisket sausage pork loin, shank pancetta meatloaf jerky swine rump shankle.
-
-Shankle filet mignon prosciutto doner. Tongue pancetta doner, pig landjaeger venison pork. Pig drumstick meatloaf tenderloin, porchetta boudin turducken pancetta picanha beef brisket burgdoggen meatball frankfurter pastrami. Bacon ham landjaeger cupim venison cow turkey, prosciutto brisket chicken swine. Jowl spare ribs bresaola flank. Pancetta shoulder ham hock, meatball beef ribs salami swine buffalo spare ribs sausage tail kevin picanha frankfurter andouille.
+Board Together is a board game platform that allows users to create their own profiles and list their favorite board games. It utilizes GraphQL and PostgreSQL to create a seamless user experience and features API calls to the popular Board Game Atlas API to provide up-to-date information about various board games. With this platform, board game enthusiasts can keep track of their collection, discover new games to play, and connect with others who share their interests. The platform is easy to use and accessible to anyone who loves board games or wants to learn more about them.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -424,7 +422,7 @@ Expected Response:
 ```
 </details><br>
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://www.google.com/)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/25666683-0ebb6dbb-8b11-460e-8585-8adaf17a4211?action=collection%2Ffork&collection-url=entityId%3D25666683-0ebb6dbb-8b11-460e-8585-8adaf17a4211%26entityType%3Dcollection%26workspaceId%3D744a08a3-dcad-44e1-bb68-becc0c7dbc17)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
