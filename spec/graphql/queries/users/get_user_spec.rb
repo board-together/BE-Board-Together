@@ -20,20 +20,26 @@ RSpec.describe Types::QueryType do
         user(username: "bigfloof") {
           id
           username
-          games {
-            id
-            boardGameAtlasId
-            url
-            name
-            yearPublished
-            minPlayers
-            maxPlayers
-            minPlaytime
-            maxPlaytime
-            minAge
-            description
-            thumbUrl
-            imageUrl
+          userGames(where: {"#{user.id}": {user_id}}) {
+            user_id
+            game_id
+            status
+            borrower_id
+            game {
+              id
+              boardGameAtlasId
+              url
+              name
+              yearPublished
+              minPlayers
+              maxPlayers
+              minPlaytime
+              maxPlaytime
+              minAge
+              description
+              thumbUrl
+              imageUrl
+            }
           }
         }
       }
