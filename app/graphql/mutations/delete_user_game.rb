@@ -7,10 +7,7 @@ class Mutations::DeleteUserGame < Mutations::BaseMutation
     user_game = UserGame.find_by(id: id)
     return { errors: [], id: nil } if user_game.nil?
 
-    if user_game.destroy
-      { errors: [], id: user_game.id }
-    else
-      { errors: user_game.errors.full_messages, id: nil }
-    end
+    user_game.destroy
+    { errors: [], id: user_game.id }
   end
 end

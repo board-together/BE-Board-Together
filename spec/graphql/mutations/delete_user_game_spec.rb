@@ -43,7 +43,7 @@ RSpec.describe Mutations::DeleteUserGame, type: :request do
     <<~GQL
       mutation {
           deleteUserGame(input :{
-              id: #{user_game.id},#{' '}
+              id: #{user_game.id},
               }) {
               id
           }
@@ -67,7 +67,7 @@ RSpec.describe Mutations::DeleteUserGame, type: :request do
     <<~GQL
       mutation {
           deleteUserGame(input :{
-              id: #{user_game.id},#{' '}
+              id: #{user_game.id},
               }) {
           }
       }
