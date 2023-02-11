@@ -73,6 +73,9 @@ Lint/UselessMethodDefinition:
 GraphQL/FieldDescription:
   Enabled: false
 
+GraphQL/ArgumentDescription:
+  Enabled: false
+
 Metrics/BlockLength:
   Enabled: false
 
