@@ -290,6 +290,45 @@ Expected Response:
 ### Search Queries
 
 <details close>
+  <summary>Update a UserGame</summary><br>
+
+Update a UserGame in the database. Can be used for borrowing a game, returning a game and changing a game status to private. <br>
+
+```mutation {
+    updateUserGame(input: { 
+      id: 7, 
+      borrowerId: 4, 
+      status: 1 }) 
+    {
+    userGame {
+      id
+      borrowerId
+      status
+    }
+      errors
+    }
+  }
+```
+
+Expected Response:
+
+ ```json
+{
+  "data": {
+    "updateUserGame": {
+      "userGame": {
+        "id": "7",
+        "borrowerId": 4,
+        "status": 1
+      },
+      "errors": []
+    }
+  }
+}
+```
+</details><br>
+
+<details close>
   <summary>Search for Games</summary><br>
 
 Search for a game matching user input.<br>
