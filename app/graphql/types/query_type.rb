@@ -25,5 +25,6 @@ module Types
     def search_games(name:)
       GameFacade.new.search(name)
     end
+    
   end
 end

@@ -13,11 +13,11 @@ class Types::UserGameType < Types::BaseObject
   delegate :game, to: :object
   delegate :status, to: :object
 
-  def borrowed_games
-    UserGame.where(borrower_id: object.id).map do |user_game|
-      OpenStruct.new(game: user_game.game, status: user_game.status)
-    end
-  end
+  # def borrowed_games
+  #   UserGame.where(borrower_id: object.id).map do |user_game|
+  #     OpenStruct.new(game: user_game.game, status: user_game.status)
+  #   end
+  # end
 
   # def owned_games
   #   UserGame.where(user_id: object.id).map do |user_game|
