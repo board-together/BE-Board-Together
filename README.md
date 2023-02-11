@@ -158,26 +158,55 @@ Expected Response:
 Return information about a specific user in the database.<br>
 
 ```query
-query {
-    user(username: "Pickafloof") {
+query {{
+  user(username: "emerita") {
+    id
+    username
+    userGames {
+      id
+      userId
+      gameId
+      status
+      borrowerId
+      game {
         id
-        username
-        games {
-            id
-            boardGameAtlasId
-            url
-            name
-            yearPublished
-            minPlayers
-            maxPlayers
-            minPlaytime
-            maxPlaytime
-            minAge
-            description
-            thumbUrl
-            imageUrl 
-        }
+        boardGameAtlasId
+        url
+        name
+        yearPublished
+        minPlayers
+        maxPlayers
+        minPlaytime
+        maxPlaytime
+        minAge
+        description
+        thumbUrl
+        imageUrl
+      }
     }
+		borrowedGames {
+      id	
+    	userId
+      gameId
+      status
+      borrowerId
+      game {
+        id
+        boardGameAtlasId
+        url
+        name
+        yearPublished
+        minPlayers
+        maxPlayers
+        minPlaytime
+        maxPlaytime
+        minAge
+        description
+        thumbUrl
+        imageUrl
+      }
+    }
+  }
 }
 ```
 
@@ -185,44 +214,148 @@ Expected Response:
 
  ```json
 {
-    "data": {
-        "user": {
+  "data": {
+    "user": {
+      "id": "1",
+      "username": "emerita",
+      "userGames": [
+        {
+          "id": "1",
+          "userId": 1,
+          "gameId": 1,
+          "status": 0,
+          "borrowerId": 1,
+          "game": {
             "id": "1",
-            "username": "Pickafloof",
-            "games": [
-                {
-                    "id": 1,
-                    "board_game_atlas_id": "OIXt3DmJU0",
-                    "url": "https://www.boardgameatlas.com/game/OIXt3DmJU0/catan",
-                    "name": "Catan",
-                    "year_published": 1995,
-                    "min_players": 3,
-                    "max_players": 4,
-                    "min_playtime": 45,
-                    "max_playtime": 90,
-                    "min_age": 10,
-                    "description": "<p>The women and men of your expedition build the first two settlements. Fortunately, the land is rich in natural resources. You build roads and new settlements that eventually become cities. Will you succeed in gaining supremacy on Catan? Barter trade dominates the scene. Some resources you have in abundance, other resources are scarce. Ore for wool, brick for lumber - you trade according to what is needed for your current building projects. Proceed strategically! If you found your settlements in the right places and skillfully trade your resources, then the odds will be in your favor. But your opponents are smart too.</p>\r\n<p>To begin the game, we build the game board using hexagonal terrain tiles. Catan is born - a beautiful island with mountains, pastures, hills, fields, and forests, surrounded by the sea.</p>\r\n<p>Each of us places two small houses on spaces where three terrain hexes meet. They are our starting settlements.</p>\r\n<p>And so it begins. I roll two dice. An “11”! Each terrain hex is marked with a die roll number. Each player who owns a settlement adjacent to a terrain hex marked with the number rolled receives a resource produced by this hex. Hills produce brick, forests produce lumber, mountains produce ore, fields produce grain, and pastures produce wool.</p>\r\n<p>We use these resources to expand across Catan: we build roads and new settlements, or we upgrade our existing settlements to cities. For example, a road costs 1 brick and 1 lumber. If we do not have the necessary resources, we can acquire them by trading with our opponents.</p>\r\n<p>Each settlement is worth 1 victory point and each city is worth 2 victory points. If you expand cleverly, you may be the first player to reach 10 victory points and thus win the game!</p>",
-                    "thumb_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1629324722072.jpg",
-                    "image_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1629324722072.jpg",
-                },
-                {
-                    "id": 2,
-                    "board_game_atlas_id": "E5TYKwLTf0",
-                    "name": "Catan: Cities & Knights",
-                    "year_published": 1998,
-                    "min_players": 3,
-                    "max_players": 4,
-                    "min_playtime": 60,
-                    "max_playtime": 90,
-                    "min_age": 10,
-                    "description": "Dark clouds gather over the once peaceful landscape. Wild barbarians, lured by Catan’s wealth and power, maneuver to attack. Their massive warships loom against the bright orange horizon. You must be strong! Barbarians attack the weakest targets, and the victim of their onslaught will be the player who contributes the least to the defense of Catan.<br /><br /> Don’t take any chances! Field your knights!<br /><br /> In <b>Catan: Cities &amp; Knights</b> you engage in the defense of Catan and compete to build the three great metropolises of Catan. Each of these magnificent urban centers is even more valuable than a city. They’re also immune to the dangerous barbarians. Invest in city improvements, which you acquire using three commodities of trade: coin, paper, and cloth. If you improve your culture, muster your knights, and enrich your fine cities, you will be the master of the great realm of Catan!<br /><br /><b> Components:</b><br /> 36 Commodity Cards<br /> 54 Progress Cards<br /> 6 Victory Point Cards<br /> 3 Wooden Metropolis Pieces<br /> 1 Wooden Merchant Figure<br /> 1 Custom Event Die<br /> 1 Wooden Barbarian Ship<br /> 24 Wooden Knights<br /> 12 City Walls<br /> 4 Development Flip-Charts<br /> 1 Sea Frame Piece<br /> 1 Rulebook<br />",
-                    "thumb_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1559257359245-51DYsPZcYyL.jpg",
-                    "image_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1559257359245-51DYsPZcYyL.jpg",
-                    "owned": "borrowed"
-                }
-            ]
+            "boardGameAtlasId": "abd6a0",
+            "url": "http://keeling.net/jae.dach",
+            "name": "Kirby's Epic Yarn",
+            "yearPublished": 1998,
+            "minPlayers": 1,
+            "maxPlayers": 13,
+            "minPlaytime": 19,
+            "maxPlaytime": 39,
+            "minAge": 1,
+            "description": "Commodi tempora dolorem. Placeat nihil sunt. Ut perspiciatis qui.",
+            "thumbUrl": "http://mcclure.org/bertram.moen",
+            "imageUrl": "https://loremflickr.com/300/300"
+          }
         }
+      ],
+      "borrowedGames": [
+        {
+          "id": "1",
+          "userId": 1,
+          "gameId": 1,
+          "status": 0,
+          "borrowerId": 1,
+          "game": {
+            "id": "1",
+            "boardGameAtlasId": "abd6a0",
+            "url": "http://keeling.net/jae.dach",
+            "name": "Kirby's Epic Yarn",
+            "yearPublished": 1998,
+            "minPlayers": 1,
+            "maxPlayers": 13,
+            "minPlaytime": 19,
+            "maxPlaytime": 39,
+            "minAge": 1,
+            "description": "Commodi tempora dolorem. Placeat nihil sunt. Ut perspiciatis qui.",
+            "thumbUrl": "http://mcclure.org/bertram.moen",
+            "imageUrl": "https://loremflickr.com/300/300"
+          }
+        },
+        {
+          "id": "2",
+          "userId": 2,
+          "gameId": 2,
+          "status": 0,
+          "borrowerId": 1,
+          "game": {
+            "id": "2",
+            "boardGameAtlasId": "ee0b20",
+            "url": "http://hane.io/cecil",
+            "name": "Team Fortress 2",
+            "yearPublished": 2016,
+            "minPlayers": 2,
+            "maxPlayers": 7,
+            "minPlaytime": 26,
+            "maxPlaytime": 4,
+            "minAge": 6,
+            "description": "Nobis fugiat voluptatem. Et quasi officia. Ut officiis doloremque.",
+            "thumbUrl": "http://glover-stoltenberg.biz/monique",
+            "imageUrl": "https://loremflickr.com/300/300"
+          }
+        },
+        {
+          "id": "3",
+          "userId": 3,
+          "gameId": 3,
+          "status": 0,
+          "borrowerId": 1,
+          "game": {
+            "id": "3",
+            "boardGameAtlasId": "85c360",
+            "url": "http://treutel.name/adella",
+            "name": "Animal Crossing: New Leaf",
+            "yearPublished": 1929,
+            "minPlayers": 1,
+            "maxPlayers": 13,
+            "minPlaytime": 17,
+            "maxPlaytime": 21,
+            "minAge": 7,
+            "description": "Ut consectetur sed. Qui alias iusto. Iusto autem aut.",
+            "thumbUrl": "http://hilpert.io/robt",
+            "imageUrl": "https://loremflickr.com/300/300"
+          }
+        },
+        {
+          "id": "6",
+          "userId": 6,
+          "gameId": 6,
+          "status": 0,
+          "borrowerId": 1,
+          "game": {
+            "id": "6",
+            "boardGameAtlasId": "35999c",
+            "url": "http://glover-mohr.com/alaina",
+            "name": "Luigi's Mansion",
+            "yearPublished": 2002,
+            "minPlayers": 2,
+            "maxPlayers": 17,
+            "minPlaytime": 6,
+            "maxPlaytime": 29,
+            "minAge": 11,
+            "description": "Sed ea nostrum. Porro doloremque nemo. Est impedit minima.",
+            "thumbUrl": "http://stiedemann-moore.org/victor_koelpin",
+            "imageUrl": "https://loremflickr.com/300/300"
+          }
+        },
+        {
+          "id": "10",
+          "userId": 10,
+          "gameId": 10,
+          "status": 0,
+          "borrowerId": 1,
+          "game": {
+            "id": "10",
+            "boardGameAtlasId": "a1d70a",
+            "url": "http://mosciski.com/zachary_nolan",
+            "name": "Half-Life: Opposing Force",
+            "yearPublished": 1987,
+            "minPlayers": 2,
+            "maxPlayers": 5,
+            "minPlaytime": 20,
+            "maxPlaytime": 4,
+            "minAge": 3,
+            "description": "Officiis magni dolor. Voluptas qui necessitatibus. Voluptatem dicta accusantium.",
+            "thumbUrl": "http://langworth.info/florentino",
+            "imageUrl": "https://loremflickr.com/300/300"
+          }
+        }
+      ]
     }
+  }
 }
 ```
 </details><br>
