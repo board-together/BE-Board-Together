@@ -73,6 +73,9 @@ RSpec/Rails/HttpStatus:
 RSpec/FilePath:
   Enabled: false
 
+RSpec/RepeatedExampleGroupBody:
+  Enabled: false
+
 Rails/HttpStatus:
   Enabled: false
 

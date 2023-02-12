@@ -3,14 +3,20 @@ class Mutations::DeleteUser < Mutations::BaseMutation
   argument :id, ID, required: true
 
   field :errors, [String], null: true
-  field :id, Types::UserType, null: true
+  field :id, ID, null: true
 
   def resolve(id:)
-    user = User.find_by(id: id)
-    
-    return { errors: [], id: nil } if user.nil?
-
-    user.destroy
-    { errors: [], id: user.id }
+    if User.exists?(id)
+      User.destroy(id)
+      {
+        id: id,
+        errors: []
+      }
+    else
+      {
+        id: nil,
+        errors: ['User does not exist']
+      }
+    end
   end
 end
