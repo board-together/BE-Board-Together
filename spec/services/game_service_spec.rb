@@ -15,10 +15,10 @@ describe 'GameService' do
 
         expect(search_results[:games]).to be_an Array
 
-        search_results[:games].each do |game_hash|
+        search_results[:games].all? do |game_hash|
           expect(game_hash).to be_a Hash
           expect(game_hash).to have_key :id
-          expect(game_hash).to have_key :handle
+          expect(game_hash).to have_key :name
           expect(game_hash).to have_key :min_players
           expect(game_hash).to have_key :max_players
           expect(game_hash).to have_key :min_playtime
