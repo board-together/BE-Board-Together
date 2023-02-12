@@ -4,16 +4,16 @@ module Types
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
 
-    field :users, [Types::UserType], null: false
-
+    field :search_games, [Types::GameType], null: false do
+      argument :name, String, required: true
+      # argument :client_id, String, required: true
+    end
     field :user, Types::UserType, null: false do
       argument :username, String, required: true
     end
+    field :users, [Types::UserType], null: false
 
-    field :search_games, [Types::GameType], null: false do
-      argument :name, String, required: true
-    end
-
+    # field methods
     def users
       User.all
     end
@@ -24,6 +24,7 @@ module Types
 
     def search_games(name:)
       GameFacade.new.search(name)
+      # GameFacade.new.search(name: name, client_id: client_id)
     end
   end
 end
