@@ -1,4 +1,4 @@
-require: 
+require:
   - rubocop-rspec
   - rubocop-rails
   - rubocop-graphql
@@ -64,8 +64,20 @@ Rails/Output:
 RSpec/Rails/HttpStatus:
   Enabled: false
 
-Rails/HttpStatus: 
+Rails/HttpStatus:
   Enabled: false
 
 Lint/UselessMethodDefinition:
+  Enabled: false
+
+GraphQL/FieldDescription:
+  Enabled: false
+
+GraphQL/ArgumentDescription:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Style/StringLiterals:
   Enabled: false
