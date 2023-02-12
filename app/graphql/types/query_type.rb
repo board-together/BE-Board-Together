@@ -26,5 +26,6 @@ module Types
       GameFacade.new.search(name)
       # GameFacade.new.search(name: name, client_id: client_id)
     end
+    
   end
 end

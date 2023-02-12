@@ -5,7 +5,12 @@ class Types::UserType < Types::BaseObject
   field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
   field :user_games, [Types::UserGameType], null: true
   field :username, String, null: false
+  field :borrowed_games, [Types::UserGameType], null: true
 
   delegate :games, to: :object
   delegate :user_games, to: :object
+
+  def borrowed_games
+    UserGame.where(borrower_id: object.id)
+  end
 end
