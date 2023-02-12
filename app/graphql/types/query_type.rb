@@ -22,7 +22,7 @@ module Types
       User.find_by(username: username)
     end
 
-    def search_games(name:, client_id:)
+    def search_games(name:)
       GameFacade.new.search(name)
       # GameFacade.new.search(name: name, client_id: client_id)
     end
