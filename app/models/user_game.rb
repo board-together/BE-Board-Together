@@ -5,5 +5,5 @@ class UserGame < ApplicationRecord
   validates :status, presence: true
   validates :borrower_id, presence: true, allow_nil: true
 
-  # enum status: { lendable: 0, borrowed: 1 } # what attributes do we want?
+  enum status: { available: 0, borrowed: 1, hidden: 2 }
 end
