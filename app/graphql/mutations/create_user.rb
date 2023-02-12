@@ -14,7 +14,7 @@ class Mutations::CreateUser < Mutations::BaseMutation
     else
       {
         user: nil,
-        errors: new_user.errors.full_messages.to_sentence
+        errors: new_user.errors.full_messages
       }
     end
   end

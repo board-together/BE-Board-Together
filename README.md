@@ -393,17 +393,18 @@ Expected Response:
 </details><br>
 
 <details close>
-  <summary>Destroy a User's Game</summary><br>
+  <summary>Remove Game and User Association</summary><br>
 
 Delete a game from a user's owned games list.<br>
 
 ```query
 mutation {
-    destroyUserGame(input:{user_id: 1, game_id: 1}) {
-        user_id
-        game_id
-    }
-}
+          deleteUserGame(input :{
+              id: 1,
+              }) {
+              id
+          }
+      }
 ```
 
 Expected Response:
@@ -411,9 +412,8 @@ Expected Response:
  ```json
 {
     "data": {
-        "destroyUserGame": {
-            "user_id": 1,
-            "game_id": 1
+        "deleteUserGame": {
+            "id": "1"
         }
     }
 }

@@ -8,6 +8,6 @@ RSpec.describe UserGame, type: :model do
 
   describe 'validations' do
     it { should validate_presence_of :status }
-    it { should validate_presence_of(:borrower_id).allow_nil}
+    it { should validate_presence_of(:borrower_id).allow_nil }
   end
 end

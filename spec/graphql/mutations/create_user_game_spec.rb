@@ -4,7 +4,7 @@ RSpec.describe Mutations::CreateUserGame, type: :request do
   before :each do
     @user = create(:user)
   end
-  
+
   describe 'create user game' do
     describe 'happy path' do
       it 'can create game and user game from mutation' do
@@ -12,7 +12,7 @@ RSpec.describe Mutations::CreateUserGame, type: :request do
 
         expect(response).to be_successful
         parsed_response = JSON.parse(response.body, symbolize_names: true)
-        
+
         expect(parsed_response[:data][:createUserGame]).to have_key(:user)
         expect(parsed_response[:data][:createUserGame][:user]).to have_key(:userGames)
         expect(parsed_response[:data][:createUserGame][:user][:userGames]).to be_a(Array)
@@ -52,7 +52,7 @@ RSpec.describe Mutations::CreateUserGame, type: :request do
               status
               borrowerId
               game {
-                id  
+                id#{'  '}
                 boardGameAtlasId
                 url
                 name
