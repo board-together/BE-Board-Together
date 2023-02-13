@@ -15,60 +15,60 @@ RSpec.describe Types::QueryType do
       expect(result['data']['user']).to have_key('borrowedGames')
       expect(result['data']['user']['borrowedGames']).to be_an(Array)
     end
-    
+
     def query
       <<~GQL
-      {
-        user(username: "#{@user.username}") {
-          id
-          username
-          userGames {
+        {
+          user(username: "#{@user.username}") {
             id
-            userId
-            gameId
-            status
-            borrowerId
-            game {
+            username
+            userGames {
               id
-              boardGameAtlasId
-              url
-              name
-              yearPublished
-              minPlayers
-              maxPlayers
-              minPlaytime
-              maxPlaytime
-              minAge
-              description
-              thumbUrl
-              imageUrl
+              userId
+              gameId
+              status
+              borrowerId
+              game {
+                id
+                boardGameAtlasId
+                url
+                name
+                yearPublished
+                minPlayers
+                maxPlayers
+                minPlaytime
+                maxPlaytime
+                minAge
+                description
+                thumbUrl
+                imageUrl
+              }
             }
-          }
-          borrowedGames {
-            id
-            userId
-            gameId
-            status
-            borrowerId
-            game {
-              name
+            borrowedGames {
               id
-              boardGameAtlasId
-              url
-              name
-              yearPublished
-              minPlayers
-              maxPlayers
-              minPlaytime
-              maxPlaytime
-              minAge
-              description
-              thumbUrl
-              imageUrl
+              userId
+              gameId
+              status
+              borrowerId
+              game {
+                name
+                id
+                boardGameAtlasId
+                url
+                name
+                yearPublished
+                minPlayers
+                maxPlayers
+                minPlaytime
+                maxPlaytime
+                minAge
+                description
+                thumbUrl
+                imageUrl
+              }
             }
           }
         }
-      }
       GQL
     end
   end

@@ -7,7 +7,7 @@ RSpec.describe Mutations::UpdateUserGame, type: :request do
     @game = create(:game)
     @user_game = @user.user_games.create!(game_id: @game.id)
   end
-  
+
   describe 'update user game' do
     describe 'happy path' do
       it 'can update game and user game from mutation' do
@@ -33,12 +33,12 @@ RSpec.describe Mutations::UpdateUserGame, type: :request do
   def query
     <<~GQL
       mutation {
-        updateUserGame(input: 
-          { 
-            id: #{@user_game.id}, 
-            borrowerId: #{@user2.id}, 
-            status: 1 
-          }) 
+        updateUserGame(input:
+          {
+            id: #{@user_game.id},
+            borrowerId: #{@user2.id},
+            status: 1
+          })
           {
           userGame {
                     id
