@@ -6,17 +6,10 @@ class Mutations::DeleteUser < Mutations::BaseMutation
   field :id, ID, null: true
 
   def resolve(id:)
-    if User.exists?(id)
-      User.destroy(id)
-      {
-        id: id,
-        errors: []
-      }
-    else
-      {
-        id: nil,
-        errors: ['User does not exist']
-      }
-    end
+    user = User.find_by(id: id)
+    return { errors: ['User does not exist'], id: nil } if user.nil?
+
+    user.destroy
+    { errors: [], id: user.id }
   end
 end
