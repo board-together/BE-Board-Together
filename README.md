@@ -412,7 +412,7 @@ Expected Response:
 {
   "data": {
     "deleteUser": {
-      "id": "3",
+      "id": "2",
       "errors": []
     }
   }
