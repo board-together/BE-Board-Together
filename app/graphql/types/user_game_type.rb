@@ -10,5 +10,4 @@ class Types::UserGameType < Types::BaseObject
 
   delegate :user, to: :object
   delegate :game, to: :object
-
 end

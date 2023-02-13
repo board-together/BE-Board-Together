@@ -24,8 +24,8 @@ RSpec.describe Mutations::DeleteUserGame, type: :request do
         expect(response).to be_successful
         parsed_response = JSON.parse(response.body, symbolize_names: true)
 
-        expect(parsed_response[:data][:deleteUserGame]).to eq(nil)
-        expect(parsed_response[:errors].first[:message]).to eq('Cannot return null for non-nullable field UserGame.id')
+        expect(parsed_response[:data][:deleteUserGame][:id]).to eq(nil)
+        expect(parsed_response[:data][:deleteUserGame][:errors][0]).to eq('UserGame does not exist')
       end
 
       it 'will raise an appropriate error if for a malformed request' do
@@ -34,7 +34,7 @@ RSpec.describe Mutations::DeleteUserGame, type: :request do
         expect(response).to be_successful
         parsed_response = JSON.parse(response.body, symbolize_names: true)
 
-        expect(parsed_response[:errors].first[:message]).to eq('Parse error on "}" (RCURLY) at [5, 5]')
+        expect(parsed_response[:errors][0][:message]).to eq('Parse error on "}" (RCURLY) at [5, 5]')
       end
     end
   end
@@ -46,6 +46,7 @@ RSpec.describe Mutations::DeleteUserGame, type: :request do
               id: #{user_game.id},
               }) {
               id
+              errors
           }
       }
     GQL
@@ -58,6 +59,7 @@ RSpec.describe Mutations::DeleteUserGame, type: :request do
               id: "",
               }) {
               id
+              errors
           }
       }
     GQL
