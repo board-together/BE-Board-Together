@@ -21,7 +21,7 @@
 </div>
 
 <!-- TABLE OF CONTENTS -->
-<h3>
+<h4>
   <summary>Table of Contents</summary>
   <ol>
     <li>
@@ -45,12 +45,10 @@
     <li><a href="#acknowledgments">Acknowledgments</li>
     <li><a href="#license">License</a></li></a>
   </ol>
-</h3>
+</h4>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-![Product Demo](lib/assets/demo.gif)
 
 Board Together is a board game platform that allows users to create their own profiles and list their favorite board games. It utilizes GraphQL and PostgreSQL to create a seamless user experience and features API calls to the popular Board Game Atlas API to provide up-to-date information about various board games. With this platform, board game enthusiasts can keep track of their collection, discover new games to play, and connect with others who share their interests. The platform is easy to use and accessible to anyone who loves board games or wants to learn more about them.
 
@@ -59,22 +57,16 @@ Board Together is a board game platform that allows users to create their own pr
 <!-- Heroku Information -->
 ### Heroku Information
 
-<b>To start, visit the link below and login or register:</b>
+Board Together is a full-stack application combining a React frontend and Ruby on Rails backend, deployed to Heroku. The frontend handles client-side tasks and displays data from the backend, which handles server-side logic and database operations. Deployment involves building the React frontend, integrating it with the Rails backend, and pushing the code to Heroku. The application can be accessed at the Heroku URL.
 
-* <a href="#">To be deployed</a><br>
-
-<b>The back-end application is hosted separately at the link below, although it offers no end-user interactions:</b>
-
-* <a href="#"></a><br>
+* <a href="https://board-together.herokuapp.com/" alt="Heroku Deployment">Heroku Deployment</a><br>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- Built With -->
 ### Built With
 
-Rails backend, React front end (etc)
-
-<img src="public/tech-stack.png" alt="Tech-Stack" width="80%" height="80%">
+<img src="public/tech-stack-BE.png" alt="Tech-Stack" width="80%" height="80%">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -93,8 +85,8 @@ Bacon ipsum dolor amet doner filet mignon flank pork ham kielbasa chicken jerky 
 <!-- Repositories -->
 ### Repositories
 
-* <b>Front-End:</b> https://github.com/board-together/FE-Board-Together <br />
-* <b>Back-End:</b> https://github.com/board-together/BE-Board-Together <br />
+* <b>Frontend:</b> https://github.com/board-together/FE-Board-Together <br />
+* <b>Backend:</b> https://github.com/board-together/BE-Board-Together <br />
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
