@@ -587,6 +587,7 @@ mutation {
               id: 1
               }) {
               id
+              errors
           }
       }
 ```
@@ -597,7 +598,8 @@ Expected Response:
 {
     "data": {
         "deleteUserGame": {
-            "id": "1"
+            "id": "1",
+            "errors": []
         }
     }
 }
