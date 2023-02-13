@@ -25,7 +25,7 @@ RSpec.describe Mutations::DeleteUserGame, type: :request do
         parsed_response = JSON.parse(response.body, symbolize_names: true)
 
         expect(parsed_response[:data][:deleteUserGame][:id]).to eq(nil)
-        expect(parsed_response[:data][:deleteUserGame][:errors][0]).to eq('User does not exist')
+        expect(parsed_response[:data][:deleteUserGame][:errors][0]).to eq('UserGame does not exist')
       end
 
       it 'will raise an appropriate error if for a malformed request' do

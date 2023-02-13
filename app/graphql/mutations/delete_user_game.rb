@@ -7,7 +7,7 @@ class Mutations::DeleteUserGame < Mutations::BaseMutation
 
   def resolve(id:)
     user_game = UserGame.find_by(id: id)
-    return { errors: ['User does not exist'], id: nil } if user_game.nil?
+    return { errors: ['UserGame does not exist'], id: nil } if user_game.nil?
 
     user_game.destroy
     { errors: [], id: user_game.id }
