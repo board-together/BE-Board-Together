@@ -667,7 +667,6 @@ Expected Response:
             }
         ]
     }
-}  }
 }
 ```
 </details><br>
