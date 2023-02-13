@@ -91,25 +91,26 @@ Bacon ipsum dolor amet doner filet mignon flank pork ham kielbasa chicken jerky 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- Back-End Repository Installation -->
-### Back-End Repository Installation
-<b>Gem Installation</b>
-* `bundle install`
+### Backend Repository Installation
 
-
-<b>Required API keys</b>:
-* Sign up for a <a href="https://www.boardgameatlas.com/api/docs/apps">Board Game Atlas client ID</a>
-<li> In your <code>application.yml</code> file:</li>
-          <ul> - Assign your Board Game Atlas api key to a variable (this will need to be passed in as query params with key <code>client_id</code>)</ul>
-
+1. Clone the repository.
+2. cd into the target directory.
+3. Install gem packages: `bundle install`.
+4. Setup the database: `rails db:{create,migrate,seed}`.
+5. Sign up for a <a href="https://www.boardgameatlas.com/api/docs/apps">Board Game Atlas Client ID</a>.
+6. In your <code>application.yml</code> file - assign your Board Game Atlas api key to a variable. This will need to be passed in as query params with key <code>client_id</code>.
+7. To run local RSpec test suite: `bundle exec rspec`, all tests should be passing.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- Available Endpoints -->
 ## Available Endpoints
 
-Endpoints are run through GraphQL queries. Expand a section below for query requests and expected responses. 
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/25666683-0ebb6dbb-8b11-460e-8585-8adaf17a4211?action=collection%2Ffork&collection-url=entityId%3D25666683-0ebb6dbb-8b11-460e-8585-8adaf17a4211%26entityType%3Dcollection%26workspaceId%3D744a08a3-dcad-44e1-bb68-becc0c7dbc17)
 
-### User Queries
+Endpoints are run through GraphQL queries. Expand a section below for query requests and expected responses.
+
+### <ins>User Queries</ins>
 <details close>
   <summary>Find All Users</summary><br>
 
@@ -412,7 +413,7 @@ Expected Response:
 ```
 </details><br>
 
-### User Games
+### <ins>User Games</ins>
 
 <details close>
   <summary>Create a User Game</summary><br>
@@ -598,7 +599,7 @@ Expected Response:
 ```
 </details><br>
 
-### Search Queries
+### <ins>Search Queries</ins>
 
 <details close>
   <summary>Search for Games</summary><br>
@@ -662,10 +663,6 @@ Expected Response:
 }
 ```
 </details><br>
-
-
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/25666683-0ebb6dbb-8b11-460e-8585-8adaf17a4211?action=collection%2Ffork&collection-url=entityId%3D25666683-0ebb6dbb-8b11-460e-8585-8adaf17a4211%26entityType%3Dcollection%26workspaceId%3D744a08a3-dcad-44e1-bb68-becc0c7dbc17)
-
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- ROADMAP -->
