@@ -21,7 +21,7 @@
 </div>
 
 <!-- TABLE OF CONTENTS -->
-<h3>
+<h4>
   <summary>Table of Contents</summary>
   <ol>
     <li>
@@ -45,12 +45,10 @@
     <li><a href="#acknowledgments">Acknowledgments</li>
     <li><a href="#license">License</a></li></a>
   </ol>
-</h3>
+</h4>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-![Product Demo](lib/assets/demo.gif)
 
 Board Together is a board game platform that allows users to create their own profiles and list their favorite board games. It utilizes GraphQL and PostgreSQL to create a seamless user experience and features API calls to the popular Board Game Atlas API to provide up-to-date information about various board games. With this platform, board game enthusiasts can keep track of their collection, discover new games to play, and connect with others who share their interests. The platform is easy to use and accessible to anyone who loves board games or wants to learn more about them.
 
@@ -59,22 +57,16 @@ Board Together is a board game platform that allows users to create their own pr
 <!-- Heroku Information -->
 ### Heroku Information
 
-<b>To start, visit the link below and login or register:</b>
+Board Together is a full-stack application combining a React frontend and Ruby on Rails backend, deployed to Heroku. The frontend handles client-side tasks and displays data from the backend, which handles server-side logic and database operations. Deployment involves building the React frontend, integrating it with the Rails backend, and pushing the code to Heroku. The application can be accessed at the Heroku URL.
 
-* <a href="#">To be deployed</a><br>
-
-<b>The back-end application is hosted separately at the link below, although it offers no end-user interactions:</b>
-
-* <a href="#"></a><br>
+* <a href="https://board-together.herokuapp.com/" alt="Heroku Deployment">Heroku Deployment</a><br>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- Built With -->
 ### Built With
 
-Rails backend, React front end (etc)
-
-<img src="public/tech-stack.png" alt="Tech-Stack" width="80%" height="80%">
+<img src="public/tech-stack-BE.png" alt="Tech-Stack" width="80%" height="80%">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -93,31 +85,32 @@ Bacon ipsum dolor amet doner filet mignon flank pork ham kielbasa chicken jerky 
 <!-- Repositories -->
 ### Repositories
 
-* <b>Front-End:</b> https://github.com/board-together/FE-Board-Together <br />
-* <b>Back-End:</b> https://github.com/board-together/BE-Board-Together <br />
+* <b>Frontend:</b> https://github.com/board-together/FE-Board-Together <br />
+* <b>Backend:</b> https://github.com/board-together/BE-Board-Together <br />
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- Back-End Repository Installation -->
-### Back-End Repository Installation
-<b>Gem Installation</b>
-* `bundle install`
+### Backend Repository Installation
 
-
-<b>Required API keys</b>:
-* Sign up for a <a href="https://www.boardgameatlas.com/api/docs/apps">Board Game Atlas client ID</a>
-<li> In your <code>application.yml</code> file:</li>
-          <ul> - Assign your Board Game Atlas api key to a variable (this will need to be passed in as query params with key <code>client_id</code>)</ul>
-
+1. Clone the repository.
+2. cd into the target directory.
+3. Install gem packages: `bundle install`.
+4. Setup the database: `rails db:{create,migrate,seed}`.
+5. Sign up for a <a href="https://www.boardgameatlas.com/api/docs/apps">Board Game Atlas Client ID</a>.
+6. In your <code>application.yml</code> file - assign your Board Game Atlas api key to a variable. This will need to be passed in as query params with key <code>client_id</code>.
+7. To run local RSpec test suite: `bundle exec rspec`, all tests should be passing.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- Available Endpoints -->
 ## Available Endpoints
 
-Endpoints are run through GraphQL queries. Expand a section below for query requests and expected responses. 
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/25666683-0ebb6dbb-8b11-460e-8585-8adaf17a4211?action=collection%2Ffork&collection-url=entityId%3D25666683-0ebb6dbb-8b11-460e-8585-8adaf17a4211%26entityType%3Dcollection%26workspaceId%3D744a08a3-dcad-44e1-bb68-becc0c7dbc17)
 
-### User Queries
+Endpoints are run through GraphQL queries. Expand a section below for query requests and expected responses.
+
+### <ins>User Queries</ins>
 <details close>
   <summary>Find All Users</summary><br>
 
@@ -420,7 +413,7 @@ Expected Response:
 ```
 </details><br>
 
-### User Games
+### <ins>User Games</ins>
 
 <details close>
   <summary>Create a User Game</summary><br>
@@ -606,7 +599,7 @@ Expected Response:
 ```
 </details><br>
 
-### Search Queries
+### <ins>Search Queries</ins>
 
 <details close>
   <summary>Search for Games</summary><br>
@@ -670,10 +663,6 @@ Expected Response:
 }
 ```
 </details><br>
-
-
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/25666683-0ebb6dbb-8b11-460e-8585-8adaf17a4211?action=collection%2Ffork&collection-url=entityId%3D25666683-0ebb6dbb-8b11-460e-8585-8adaf17a4211%26entityType%3Dcollection%26workspaceId%3D744a08a3-dcad-44e1-bb68-becc0c7dbc17)
-
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- ROADMAP -->
