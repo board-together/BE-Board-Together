@@ -1,5 +1,5 @@
 class Mutations::UpdateUserGame < Mutations::BaseMutation
-  argument :borrower_id, Integer
+  argument :borrower_id, Integer, required: :nullable
   argument :id, Integer, required: true
   argument :status, Integer, required: true
 
