@@ -28,6 +28,36 @@ RSpec.describe Mutations::UpdateUserGame, type: :request do
         expect(parsed_response[:data][:updateUserGame][:userGame][:status]).to be_a(Integer)
       end
     end
+
+    describe 'sad paths' do
+      it 'will raise an appropriate error if the UserGame ID is not found' do
+        post '/graphql', params: { query: invalid_user_game_id_query }
+
+        expect(response).to be_successful
+        parsed_response = JSON.parse(response.body, symbolize_names: true)
+        
+        expect(parsed_response[:data][:updateUserGame]).to eq(nil)
+        expect(parsed_response[:errors].first[:message]).to eq("Cannot return null for non-nullable field UpdateUserGamePayload.userGame")
+      end
+
+      it 'will raise an appropriate error if a UserGame ID is not given' do
+        post '/graphql', params: { query: no_user_game_id_query }
+
+        expect(response).to be_successful
+        parsed_response = JSON.parse(response.body, symbolize_names: true)
+        
+        expect(parsed_response[:errors].first[:message]).to eq("Argument 'id' on InputObject 'UpdateUserGameInput' has an invalid value (\"\"). Expected type 'Int!'.")
+      end
+
+      it 'will raise an appropriate error if a malformed query is used' do
+        post '/graphql', params: { query: malformed_query }
+
+        expect(response).to be_successful
+        parsed_response = JSON.parse(response.body, symbolize_names: true)
+        
+        expect(parsed_response[:errors].first[:message]).to include("Parse error on")
+      end
+    end
   end
 
   def query
@@ -46,6 +76,69 @@ RSpec.describe Mutations::UpdateUserGame, type: :request do
                     status
                   }
             errors
+          }
+        }
+    GQL
+  end
+
+  def invalid_user_game_id_query
+    <<~GQL
+      mutation {
+        updateUserGame(input:
+          {
+            id: 450,
+            borrowerId: #{@user2.id},
+            status: 1
+          })
+          {
+          userGame {
+                    id
+                    borrowerId
+                    status
+                  }
+            errors
+          }
+        }
+    GQL
+  end
+
+  def no_user_game_id_query
+    <<~GQL
+      mutation {
+        updateUserGame(input:
+          {
+            id: "",
+            borrowerId: #{@user2.id},
+            status: 1
+          })
+          {
+          userGame {
+                    id
+                    borrowerId
+                    status
+                  }
+            errors
+          }
+        }
+    GQL
+  end
+
+  def malformed_query
+    <<~GQL
+      mutation {
+        updateUserGame(input:
+          {
+            id: #{@user_game.id},
+            borrowerId: #{@user2.id},
+            status: 1
+          })
+          {
+           {
+              id
+              borrowerId
+              status
+            }
+          errors
           }
         }
     GQL
