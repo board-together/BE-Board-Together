@@ -9,13 +9,13 @@
 <br />
 <div align="center">
   <a href="https://github.com/board-together">
-    <img src="https://st3.depositphotos.com/20363444/31955/i/1600/depositphotos_319556144-stock-photo-bored-pensive-friends-sitting-together.jpg" alt="Logo">
+    <img src="public/board-together.png" alt="Logo">
   </a>
 
   <h1 align="center">Board (games) Together!</h3>
 
   <h3 align="center">
-    Board Game Swap app
+    Board Game Swap Application
     <br />
   </h3>
 </div>
@@ -30,13 +30,14 @@
         <li><a href="#heroku-information">Heroku Information</a></li>
         <li><a href="#built-with">Built With</a></li>
         <li><a href="#database-schema">Database Schema</a></li>
+        <li><a href="#learning-goals">Learning Goals</a></li>
       </ul>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
           <li><a href="#repositories">Repositories</a></li>
-          <li><a href="#back-end-repository-installation">Back-End Repository Installation</a></li>
+          <li><a href="#backend-repository-installation">Backend Repository Installation</a></li>
           <li><a href="#available-endpoints">Available Endpoints</a></li>
       </ul>
     </li>
@@ -66,7 +67,7 @@ Board Together is a full-stack application combining a React frontend and Ruby o
 <!-- Built With -->
 ### Built With
 
-<img src="public/tech-stack-BE.png" alt="Tech-Stack" width="80%" height="80%">
+<img src="public/tech-stack-BE.png" alt="Tech-Stack" width="90%" height="90%">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -77,10 +78,19 @@ Board Together is a full-stack application combining a React frontend and Ruby o
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+<!-- Learning Goals -->
+### Learning Goals
+
+* Implement GraphQL into Rails application to make API calls.
+* Work in a full-stack development team.
+* Utilize continuous integration with CircleCI.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Bacon ipsum dolor amet doner filet mignon flank pork ham kielbasa chicken jerky sirloin short ribs rump turducken. Kevin leberkas andouille, alcatra bresaola burgdoggen cow ball tip shankle. Meatloaf prosciutto bacon beef pork belly, boudin ball tip cupim kielbasa turducken pork loin landjaeger brisket buffalo. Short loin brisket drumstick salami cow shank pastrami pig bacon alcatra frankfurter picanha ham hock spare ribs tenderloin. T-bone brisket sausage pork loin, shank pancetta meatloaf jerky swine rump shankle.
+Board Together utilizes a service oriented architecture with separate backend and frontend services. Installation instructions for the backend repository below. Frontend installation instructions can be found in the repository section. The Postman mock server below can be used to test the available endpoints. Expected request and response formats are listed for CRUD functionality.
 
 <!-- Repositories -->
 ### Repositories
@@ -90,16 +100,37 @@ Bacon ipsum dolor amet doner filet mignon flank pork ham kielbasa chicken jerky 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- Back-End Repository Installation -->
+<!-- Backend Repository Installation -->
 ### Backend Repository Installation
 
 1. Clone the repository.
-2. cd into the target directory.
-3. Install gem packages: `bundle install`.
-4. Setup the database: `rails db:{create,migrate,seed}`.
-5. Sign up for a <a href="https://www.boardgameatlas.com/api/docs/apps">Board Game Atlas Client ID</a>.
-6. In your <code>application.yml</code> file - assign your Board Game Atlas api key to a variable. This will need to be passed in as query params with key <code>client_id</code>.
-7. To run local RSpec test suite: `bundle exec rspec`, all tests should be passing.
+1. cd into the target directory.
+1. Install gem packages: `bundle install`.
+1. Setup the database: `rails db:{create,migrate,seed}`.
+1. Sign up for a <a href="https://www.boardgameatlas.com/api/docs/apps">Board Game Atlas Client ID</a>.
+1. Install figaro: `bundle exec figaro install`.
+1. In your <code>application.yml</code> file - assign your Board Game Atlas api key to a variable. This will need to be passed in as query params with key <code>client_id</code>.
+1. To run local RSpec test suite: `bundle exec rspec`, all tests should be passing.
+
+### Gems Utilized
+
+- [Factory Bot Rails](https://github.com/thoughtbot/factory_bot_rails)
+- [Faker](https://github.com/vajradog/faker-rails)
+- [Faraday](https://lostisland.github.io/faraday/usage/)
+- [Figaro](https://github.com/laserlemon/figaro)
+- [GraphQL Ruby](https://github.com/rmosolgo/graphql-ruby)
+- [GraphiQL Rails](https://github.com/rmosolgo/graphiql-rails)
+- [Pry](https://github.com/pry/pry)
+- [Pry Rails](https://github.com/pry/pry-rails)
+- [Rack CORS](https://github.com/cyu/rack-cors)
+- [RSpec Rails](https://github.com/rspec/rspec-rails)
+- [RuboCop GraphQL](https://github.com/DmitryTsepelev/rubocop-graphql)
+- [RuboCop Rails](https://github.com/rubocop/rubocop-rails)
+- [RuboCop RSpec](https://github.com/rubocop/rubocop-rspec)
+- [SimpleCov](https://github.com/simplecov-ruby/simplecov)
+- [Shoulda-Matchers](https://github.com/thoughtbot/shoulda-matchers)
+- [Webmock](https://github.com/bblimke/webmock)
+- [VCR](https://github.com/vcr/vcr)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -416,9 +447,9 @@ Expected Response:
 ### <ins>User Games</ins>
 
 <details close>
-  <summary>Create a User Game</summary><br>
+  <summary>Save a Game to a User</summary><br>
 
-Create a UserGame in the database. <br>
+This creates a game if it does not exist in the database. It also creates a relationship between the game and the given user. The response will give a unique UserGame ID that is used in other queries to update or delete the User and Game association.<br>
 
 ```query
 mutation {
@@ -530,9 +561,9 @@ Expected Response:
 </details><br>
 
 <details close>
-  <summary>Update a UserGame</summary><br>
+  <summary>Update a User and Game Association</summary><br>
 
-Update a UserGame in the database. Can be used for borrowing a game, returning a game and changing a game status to private. <br>
+Update a UserGame in the database. Can be used for borrowing a game, returning a game and changing a game status to private. The ID required for query input will be the UserGame's unique ID.<br>
 
 ```query
 mutation {
@@ -570,10 +601,10 @@ Expected Response:
 </details><br>
 
 <details close>
-  <summary>Remove Game and User Association</summary><br>
+  <summary>Remove a User and Game Association</summary><br>
 
-Delete a game from a user's owned games list.<br>
-- NOTE: id is the UserGame id
+Delete a game from a user's owned games list. The ID required for query input will be the UserGame's unique ID.<br>
+
 ```query
 mutation {
           deleteUserGame(input :{
@@ -604,7 +635,7 @@ Expected Response:
 <details close>
   <summary>Search for Games</summary><br>
 
-Search for a game matching user input.<br>
+Search for a game matching user input. Results include partial matches.<br>
 
 ```query
 query {
@@ -669,10 +700,19 @@ Expected Response:
 ## Roadmap
 
 MVP
-* [ ] DO STUFF
+
+* CRUD functionality for User and UserGames.
+* Search for a board game utilizing [Board Game Atlas API](https://www.boardgameatlas.com/api/docs/search).
+* Add board games to User collection.
+* Track board games you have borrowed and board games you have lent out.
 
 Stretch Goals
-* [ ] EXTENSINOS
+
+* Add friends feature, allowing a User to add friends and see that friend's games instead of all User's games.
+* Implement User authentication using a OAuth provider.
+* Create board game parties, where friends can arrange get togethers to play a certain game.
+* Ability to add comments or reviews to games you have, or have borrowed.
+* Email notifications for requests to borrow games.
 
 See the [open issues](https://github.com/board-together/BE-Board-Together/issues) for a full list of proposed features (and known issues).
 
