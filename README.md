@@ -736,20 +736,20 @@ See the [open issues](https://github.com/board-together/BE-Board-Together/issues
   </tr>
   <tr>
     <td>
-      <a href="https://github.com/ajpulzone">GitHub</a><br>
-      <a href="https://www.linkedin.com/in/annie-pulzone/">LinkedIn</a>
+      <img src="public/github-logo.png" alt="github"> <a href="https://github.com/ajpulzone">GitHub</a><br>
+      <img src="public/linkedin-logo.png" alt="linkedin"> <a href="https://www.linkedin.com/in/annie-pulzone/">LinkedIn</a>
     </td>
     <td>
-      <a href="https://github.com/bkeener7">GitHub</a><br>
-      <a href="https://www.linkedin.com/in/bkeener/">LinkedIn</a>
+      <img src="public/github-logo.png" alt="github"> <a href="https://github.com/bkeener7">GitHub</a><br>
+      <img src="public/linkedin-logo.png" alt="linkedin"> <a href="https://www.linkedin.com/in/bkeener/">LinkedIn</a>
     </td>
     <td>
-      <a href="https://github.com/DarbySmith">GitHub</a><br>
-      <a href="https://www.linkedin.com/in/darby-m-smith/">LinkedIn</a>
+      <img src="public/github-logo.png" alt="github"> <a href="https://github.com/DarbySmith">GitHub</a><br>
+      <img src="public/linkedin-logo.png" alt="linkedin"> <a href="https://www.linkedin.com/in/darby-m-smith/">LinkedIn</a>
     </td>
     <td>
-      <a href="https://github.com/marchandMD">GitHub</a><br>
-      <a href="https://www.linkedin.com/in/mmarchand1/">LinkedIn</a>
+      <img src="public/github-logo.png" alt="github"> <a href="https://github.com/marchandMD">GitHub</a><br>
+      <img src="public/linkedin-logo.png" alt="linkedin"> <a href="https://www.linkedin.com/in/mmarchand1/">LinkedIn</a>
     </td>
   </tr>
 </table>
