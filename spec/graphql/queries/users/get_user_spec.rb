@@ -40,7 +40,7 @@ RSpec.describe Types::QueryType do
 
         expect(result['data']).to eq(nil)
         expect(result['errors'].first['message']).to eq("Cannot return null for non-nullable field Query.user")
-      end  
+      end
     end
 
     def query
