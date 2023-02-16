@@ -35,7 +35,7 @@ RSpec.describe Mutations::UpdateUserGame, type: :request do
 
         expect(response).to be_successful
         parsed_response = JSON.parse(response.body, symbolize_names: true)
-        
+
         expect(parsed_response[:data][:updateUserGame]).to eq(nil)
         expect(parsed_response[:errors].first[:message]).to eq("Cannot return null for non-nullable field UpdateUserGamePayload.userGame")
       end
@@ -45,7 +45,7 @@ RSpec.describe Mutations::UpdateUserGame, type: :request do
 
         expect(response).to be_successful
         parsed_response = JSON.parse(response.body, symbolize_names: true)
-        
+
         expect(parsed_response[:errors].first[:message]).to eq("Argument 'id' on InputObject 'UpdateUserGameInput' has an invalid value (\"\"). Expected type 'Int!'.")
       end
 
@@ -54,7 +54,7 @@ RSpec.describe Mutations::UpdateUserGame, type: :request do
 
         expect(response).to be_successful
         parsed_response = JSON.parse(response.body, symbolize_names: true)
-        
+
         expect(parsed_response[:errors].first[:message]).to include("Parse error on")
       end
     end
