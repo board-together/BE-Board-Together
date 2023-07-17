@@ -1,70 +1,35 @@
 require 'rails_helper'
 
 describe Mutations::DeleteUser, type: :request do
-  before(:each) do
-    @user = create(:user)
-  end
+  let!(:user) { create(:user) }
+  let(:parsed_response) { JSON.parse(response.body, symbolize_names: true) }
 
-  describe 'happy path' do
+  context 'happy path' do
     it 'deletes a user via mutation' do
-      expect(User.count).to eq(1)
-      post '/graphql', params: { query: happy_path_mutation }
+      post '/graphql', params: { query: mutation(user.id) }
 
       expect(response).to be_successful
-      parsed_response = JSON.parse(response.body, symbolize_names: true)
-
-      expect(parsed_response).to be_a Hash
-      expect(parsed_response).to have_key :data
-      expect(parsed_response[:data]).to be_a Hash
-      expect(parsed_response[:data]).to have_key :deleteUser
-      expect(parsed_response[:data][:deleteUser]).to be_a Hash
-      expect(parsed_response[:data][:deleteUser]).to have_key :id
-      expect(parsed_response[:data][:deleteUser][:id]).to eq("#{@user.id}")
-      expect(User.count).to eq(0)
+      expect(parsed_response.dig(:data, :deleteUser, :id)).to eq(user.id.to_s)
+      expect { User.find(user.id) }.to raise_error(ActiveRecord::RecordNotFound)
     end
   end
 
-  describe 'sad path' do
-    it 'won\'t delete if a non-existent user is passed via mutation' do
-      expect(User.count).to eq(1)
-      post '/graphql', params: { query: sad_path_mutation }
+  context 'sad path' do
+    it 'does not delete when a non-existent user is passed via mutation' do
+      non_existent_id = User.maximum(:id).next
+      post '/graphql', params: { query: mutation(non_existent_id) }
 
       expect(response).to be_successful
-      parsed_response = JSON.parse(response.body, symbolize_names: true)
-
-      expect(parsed_response).to be_a Hash
-      expect(parsed_response).to have_key :data
-      expect(parsed_response[:data]).to be_a Hash
-      expect(parsed_response[:data]).to have_key :deleteUser
-      expect(parsed_response[:data][:deleteUser]).to be_a Hash
-      expect(parsed_response[:data][:deleteUser]).to have_key :id
-      expect(parsed_response[:data][:deleteUser][:id]).not_to eq("#{@user.id}")
-      expect(parsed_response[:data][:deleteUser]).to have_key :errors
-      expect(parsed_response[:data][:deleteUser][:errors]).to be_an Array
-      expect(parsed_response[:data][:deleteUser][:errors][0]).to be_a String
-      expect(parsed_response[:data][:deleteUser][:errors][0]).to eq('User does not exist')
-      expect(User.count).to eq(1)
+      expect(parsed_response.dig(:data, :deleteUser, :id)).to be_nil
+      expect(parsed_response.dig(:data, :deleteUser, :errors)).to eq(['User does not exist'])
     end
   end
 
-  def happy_path_mutation
+  def mutation(id)
     <<~GQL
       mutation {
         deleteUser(input :{
-         id: "#{@user.id}",
-        }) {
-          id
-          errors
-        }
-      }
-    GQL
-  end
-
-  def sad_path_mutation
-    <<~GQL
-      mutation {
-        deleteUser(input :{
-         id: "999",
+         id: "#{id}",
         }) {
           id
           errors

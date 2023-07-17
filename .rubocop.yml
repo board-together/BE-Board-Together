@@ -2,6 +2,9 @@ require:
   - rubocop-rspec
   - rubocop-rails
   - rubocop-graphql
+  - rubocop-factory_bot
+  - rubocop-capybara
+
 # The behavior of RuboCop can be controlled via the .rubocop.yml
 # configuration file. It makes it possible to enable/disable
 # certain cops (checks) and to alter their behavior if they accept
@@ -13,9 +16,10 @@ require:
 #
 # See https://docs.rubocop.org/rubocop/configuration
 
-Layout/LineLength:
-  Enabled: false
+AllCops:
+  NewCops: enable
 
+# General Style Rules
 Style/FrozenStringLiteralComment:
   Enabled: false
 
@@ -34,22 +38,31 @@ Style/SymbolArray:
 Style/ClassAndModuleChildren:
   Enabled: false
 
+Style/StringLiterals:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+# Metrics Rules
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+# Lint Rules
+Lint/UselessMethodDefinition:
+  Enabled: false
+
+# RSpec Rules
 RSpec/ImplicitExpect:
-  Enabled: false
-
-RSpec/NotToNot:
-  Enabled: false
-
-RSpec/Capybara/CurrentPathExpectation:
   Enabled: false
 
 RSpec/HookArgument:
   Enabled: false
 
 RSpec/EmptyExampleGroup:
-  Enabled: false
-
-RSpec/FactoryBot/FactoryClassName:
   Enabled: false
 
 RSpec/DescribeClass:
@@ -61,12 +74,6 @@ RSpec/MultipleExpectations:
 RSpec/ExampleLength:
   Enabled: false
 
-Rails/TimeZone:
-  Enabled: false
-
-Rails/Output:
-  Enabled: false
-
 RSpec/Rails/HttpStatus:
   Enabled: false
 
@@ -76,12 +83,17 @@ RSpec/FilePath:
 RSpec/RepeatedExampleGroupBody:
   Enabled: false
 
+# Rails Rules
+Rails/TimeZone:
+  Enabled: false
+
+Rails/Output:
+  Enabled: false
+
 Rails/HttpStatus:
   Enabled: false
 
-Lint/UselessMethodDefinition:
-  Enabled: false
-
+# GraphQL Rules
 GraphQL/FieldDescription:
   Enabled: false
 
@@ -91,15 +103,10 @@ GraphQL/ArgumentDescription:
 GraphQL/ObjectDescription:
   Enabled: false
 
-Metrics/BlockLength:
+# Capybara Rules
+Capybara/CurrentPathExpectation:
   Enabled: false
 
-Metrics/MethodLength:
+# FactoryBot Rules
+FactoryBot/FactoryClassName:
   Enabled: false
-
-Style/StringLiterals:
-  Enabled: false
-
-Style/Documentation:
-  Enabled: false
-

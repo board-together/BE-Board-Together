@@ -9,7 +9,12 @@ class Mutations::UpdateUserGame < Mutations::BaseMutation
   def resolve(id:, borrower_id:, status:)
     find_user_game = UserGame.find_by(id: id)
 
-    if !find_user_game.nil?
+    if find_user_game.nil?
+      {
+        user_game: nil,
+        errors: []
+      }
+    else
       find_user_game.update(borrower_id: borrower_id, status: status)
       updated_user_game = UserGame.find_by(id: id)
 
@@ -19,11 +24,6 @@ class Mutations::UpdateUserGame < Mutations::BaseMutation
           borrower_id: borrower_id,
           status: UserGame.statuses[updated_user_game.status]
         },
-        errors: []
-      }
-    else
-      {
-        user_game: nil,
         errors: []
       }
     end
