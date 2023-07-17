@@ -9,7 +9,7 @@ RSpec.describe Types::QueryType do
 
     describe "happy path" do
       it 'can query for a user by username' do
-        result = BoardTogetherSchema.execute(query).as_json
+        result = BoardTogetherSchema.execute(query(@user.username)).as_json
 
         expect(result['data']['user']).to have_key('username')
         expect(result['data']['user']['username']).to eq('bigfloof')
@@ -22,192 +22,79 @@ RSpec.describe Types::QueryType do
 
     describe "sad paths" do
       it "will raise appropriate errors when an invalid username is entered" do
-        result = BoardTogetherSchema.execute(invalid_user_name_query).as_json
+        result = BoardTogetherSchema.execute(query("NoSuchUser")).as_json
 
         expect(result['data']).to be_nil
         expect(result['errors'].first['message']).to eq("Cannot return null for non-nullable field Query.user")
       end
 
       it "will raise appropriate errors when no username is entered" do
-        result = BoardTogetherSchema.execute(no_user_name_query).as_json
+        result = BoardTogetherSchema.execute(query("")).as_json
 
         expect(result['data']).to be_nil
         expect(result['errors'].first['message']).to eq("Cannot return null for non-nullable field Query.user")
       end
 
       it "will raise appropriate errors when a malformed query is entered" do
-        result = BoardTogetherSchema.execute(invalid_user_name_query).as_json
+        result = BoardTogetherSchema.execute(malformed_query).as_json
 
         expect(result['data']).to be_nil
-        expect(result['errors'].first['message']).to eq("Cannot return null for non-nullable field Query.user")
+        expect(result['errors'].first['message']).to eq("Selections can't be made on scalars (field 'username' returns String but has selections [\"id\", \"userId\", \"gameId\", \"status\", \"borrowerId\"])")
       end
     end
 
-    def query
+    def query(username)
       <<~GQL
         {
-          user(username: "#{@user.username}") {
-            id
-            username
-            userGames {
-              id
-              userId
-              gameId
-              status
-              borrowerId
-              game {
-                id
-                boardGameAtlasId
-                url
-                name
-                yearPublished
-                minPlayers
-                maxPlayers
-                minPlaytime
-                maxPlaytime
-                minAge
-                description
-                thumbUrl
-                imageUrl
-              }
-            }
-            borrowedGames {
-              id
-              userId
-              gameId
-              status
-              borrowerId
-              game {
-                name
-                id
-                boardGameAtlasId
-                url
-                name
-                yearPublished
-                minPlayers
-                maxPlayers
-                minPlaytime
-                maxPlaytime
-                minAge
-                description
-                thumbUrl
-                imageUrl
-              }
-            }
+          user(username: "#{username}") {
+            #{user_fields}
           }
         }
       GQL
     end
 
-    def invalid_user_name_query
+    def user_fields
       <<~GQL
-        {
-          user(username: "NoSuchUser") {
-            id
-            username
-            userGames {
-              id
-              userId
-              gameId
-              status
-              borrowerId
-              game {
-                id
-                boardGameAtlasId
-                url
-                name
-                yearPublished
-                minPlayers
-                maxPlayers
-                minPlaytime
-                maxPlaytime
-                minAge
-                description
-                thumbUrl
-                imageUrl
-              }
-            }
-            borrowedGames {
-              id
-              userId
-              gameId
-              status
-              borrowerId
-              game {
-                name
-                id
-                boardGameAtlasId
-                url
-                name
-                yearPublished
-                minPlayers
-                maxPlayers
-                minPlaytime
-                maxPlaytime
-                minAge
-                description
-                thumbUrl
-                imageUrl
-              }
-            }
+        id
+        username
+        userGames {
+          id
+          userId
+          gameId
+          status
+          borrowerId
+          game {
+            #{game_fields}
+          }
+        }
+        borrowedGames {
+          id
+          userId
+          gameId
+          status
+          borrowerId
+          game {
+            #{game_fields}
           }
         }
       GQL
     end
 
-    def no_user_name_query
+    def game_fields
       <<~GQL
-        {
-          user(username: "") {
-            id
-            username
-            userGames {
-              id
-              userId
-              gameId
-              status
-              borrowerId
-              game {
-                id
-                boardGameAtlasId
-                url
-                name
-                yearPublished
-                minPlayers
-                maxPlayers
-                minPlaytime
-                maxPlaytime
-                minAge
-                description
-                thumbUrl
-                imageUrl
-              }
-            }
-            borrowedGames {
-              id
-              userId
-              gameId
-              status
-              borrowerId
-              game {
-                name
-                id
-                boardGameAtlasId
-                url
-                name
-                yearPublished
-                minPlayers
-                maxPlayers
-                minPlaytime
-                maxPlaytime
-                minAge
-                description
-                thumbUrl
-                imageUrl
-              }
-            }
-          }
-        }
+        id
+        boardGameAtlasId
+        url
+        name
+        yearPublished
+        minPlayers
+        maxPlayers
+        minPlaytime
+        maxPlaytime
+        minAge
+        description
+        thumbUrl
+        imageUrl
       GQL
     end
 
@@ -246,20 +133,7 @@ RSpec.describe Types::QueryType do
               status
               borrowerId
               game {
-                name
-                id
-                boardGameAtlasId
-                url
-                name
-                yearPublished
-                minPlayers
-                maxPlayers
-                minPlaytime
-                maxPlaytime
-                minAge
-                description
-                thumbUrl
-                imageUrl
+                #{game_fields}
               }
             }
           }

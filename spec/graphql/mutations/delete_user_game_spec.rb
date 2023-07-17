@@ -2,48 +2,47 @@ require 'rails_helper'
 
 RSpec.describe Mutations::DeleteUserGame, type: :request do
   let!(:user_game) { create(:user_game) }
+  let(:parsed_response) { JSON.parse(response.body, symbolize_names: true) }
 
   describe 'delete user game' do
-    describe 'happy path' do
+    context 'happy path' do
+      before { post '/graphql', params: { query: query(user_game.id) } }
+
       it 'can delete a UserGame from database' do
-        post '/graphql', params: { query: query }
-
         expect(response).to be_successful
-        parsed_response = JSON.parse(response.body, symbolize_names: true)
-
         expect { UserGame.find(user_game.id) }.to raise_error(ActiveRecord::RecordNotFound)
         expect(parsed_response[:data][:deleteUserGame]).to have_key(:id)
         expect(parsed_response[:data][:deleteUserGame][:id]).to eq(user_game.id.to_s)
       end
     end
 
-    describe 'sad path' do
-      it 'will raise an appropriate error if the UserGame ID is not found' do
-        post '/graphql', params: { query: no_id_query }
+    context 'sad path' do
+      context 'when UserGame ID is not found' do
+        before { post '/graphql', params: { query: query('') } }
 
-        expect(response).to be_successful
-        parsed_response = JSON.parse(response.body, symbolize_names: true)
-
-        expect(parsed_response[:data][:deleteUserGame][:id]).to be_nil
-        expect(parsed_response[:data][:deleteUserGame][:errors][0]).to eq('UserGame does not exist')
+        it 'will raise an appropriate error' do
+          expect(response).to be_successful
+          expect(parsed_response[:data][:deleteUserGame][:id]).to be_nil
+          expect(parsed_response[:data][:deleteUserGame][:errors][0]).to eq('UserGame does not exist')
+        end
       end
 
-      it 'will raise an appropriate error if for a malformed request' do
-        post '/graphql', params: { query: malformed_query }
+      context 'when the request is malformed' do
+        before { post '/graphql', params: { query: malformed_query(user_game.id) } }
 
-        expect(response).to be_successful
-        parsed_response = JSON.parse(response.body, symbolize_names: true)
-
-        expect(parsed_response[:errors][0][:message]).to eq('Parse error on "}" (RCURLY) at [5, 5]')
+        it 'will raise an appropriate error' do
+          expect(response).to be_successful
+          expect(parsed_response[:errors][0][:message]).to eq('Parse error on "}" (RCURLY) at [5, 5]')
+        end
       end
     end
   end
 
-  def query
+  def query(id)
     <<~GQL
       mutation {
           deleteUserGame(input :{
-              id: #{user_game.id},
+              id: "#{id}",
               }) {
               id
               errors
@@ -52,24 +51,11 @@ RSpec.describe Mutations::DeleteUserGame, type: :request do
     GQL
   end
 
-  def no_id_query
+  def malformed_query(id)
     <<~GQL
       mutation {
           deleteUserGame(input :{
-              id: "",
-              }) {
-              id
-              errors
-          }
-      }
-    GQL
-  end
-
-  def malformed_query
-    <<~GQL
-      mutation {
-          deleteUserGame(input :{
-              id: #{user_game.id},
+              id: "#{id}",
               }) {
           }
       }
