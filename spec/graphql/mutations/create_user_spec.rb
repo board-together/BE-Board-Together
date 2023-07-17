@@ -21,7 +21,7 @@ RSpec.describe Mutations::CreateUser, type: :request do
         expect(response).to be_successful
         parsed_response = JSON.parse(response.body, symbolize_names: true)
 
-        expect(parsed_response[:data][:createUser]).to eq(nil)
+        expect(parsed_response[:data][:createUser]).to be_nil
         expect(parsed_response[:errors].first[:message]).to eq('Cannot return null for non-nullable field CreateUserPayload.user')
       end
 
@@ -32,7 +32,7 @@ RSpec.describe Mutations::CreateUser, type: :request do
         expect(response).to be_successful
         parsed_response = JSON.parse(response.body, symbolize_names: true)
 
-        expect(parsed_response[:data][:createUser]).to eq(nil)
+        expect(parsed_response[:data][:createUser]).to be_nil
         expect(parsed_response[:errors].first[:message]).to eq('Cannot return null for non-nullable field CreateUserPayload.user')
       end
     end

@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe Types::QueryType do
   describe 'find user' do
     before(:each) do
-      @user = FactoryBot.create(:user, username: 'bigfloof')
-      @game = FactoryBot.create(:user_game, user_id: @user.id)
+      @user = create(:user, username: 'bigfloof')
+      @game = create(:user_game, user_id: @user.id)
     end
 
     describe "happy path" do
@@ -24,21 +24,21 @@ RSpec.describe Types::QueryType do
       it "will raise appropriate errors when an invalid username is entered" do
         result = BoardTogetherSchema.execute(invalid_user_name_query).as_json
 
-        expect(result['data']).to eq(nil)
+        expect(result['data']).to be_nil
         expect(result['errors'].first['message']).to eq("Cannot return null for non-nullable field Query.user")
       end
 
       it "will raise appropriate errors when no username is entered" do
         result = BoardTogetherSchema.execute(no_user_name_query).as_json
 
-        expect(result['data']).to eq(nil)
+        expect(result['data']).to be_nil
         expect(result['errors'].first['message']).to eq("Cannot return null for non-nullable field Query.user")
       end
 
       it "will raise appropriate errors when a malformed query is entered" do
         result = BoardTogetherSchema.execute(invalid_user_name_query).as_json
 
-        expect(result['data']).to eq(nil)
+        expect(result['data']).to be_nil
         expect(result['errors'].first['message']).to eq("Cannot return null for non-nullable field Query.user")
       end
     end
