@@ -10,7 +10,7 @@ gem 'rails', '~> 5.2.8', '>= 5.2.8.1'
 gem 'pg', '>= 0.18', '< 2.0'
 
 # Server
-gem 'puma', '~> 4.3'
+gem 'puma', '~> 5.6'
 
 # HTTP Client
 gem 'faraday'
