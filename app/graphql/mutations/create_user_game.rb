@@ -16,10 +16,12 @@ class Mutations::CreateUserGame < Mutations::BaseMutation
   field :user, Types::UserType, null: false
   field :user_games, [Types::UserGameType], null: true
 
-  def resolve(user_id:, board_game_atlas_id:, url:, name:, year_published:, min_players:, max_players:, min_playtime:, max_playtime:, min_age:, description:, thumb_url:, image_url:)
+  def resolve(user_id:, board_game_atlas_id:, url:, name:, year_published:, min_players:, max_players:, min_playtime:,
+              max_playtime:, min_age:, description:, thumb_url:, image_url:)
     user = User.find(user_id)
 
-    game = Game.find_or_create_by(board_game_atlas_id: board_game_atlas_id, url: url, name: name, year_published: year_published, min_players: min_players, max_players: max_players, min_playtime: min_playtime, max_playtime: max_playtime, min_age: min_age, description: description, thumb_url: thumb_url, image_url: image_url)
+    game = Game.find_or_create_by(board_game_atlas_id: board_game_atlas_id, url: url, name: name,
+                                  year_published: year_published, min_players: min_players, max_players: max_players, min_playtime: min_playtime, max_playtime: max_playtime, min_age: min_age, description: description, thumb_url: thumb_url, image_url: image_url)
 
     UserGame.create!(user_id: user.id, game_id: game.id, status: 0, borrower_id: nil)
   end

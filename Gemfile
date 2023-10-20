@@ -3,43 +3,50 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.4'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+# Rails
 gem 'rails', '~> 5.2.8', '>= 5.2.8.1'
-# Use postgresql as the database for Active Record
+
+# Database
 gem 'pg', '>= 0.18', '< 2.0'
-# Use Puma as the app server
-gem 'faraday'
+
+# Server
 gem 'puma', '~> 4.3'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+
+# HTTP Client
+gem 'faraday'
+
+# Json API Builder
 # gem 'jbuilder', '~> 2.5'
-# Use Redis adapter to run Action Cable in production
+
+# Redis for Action Cable
 # gem 'redis', '~> 4.0'
-# Use ActiveModel has_secure_password
+
+# Secure Password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use ActiveStorage variant
+# Image Processing
 # gem 'mini_magick', '~> 4.8'
 
-# Use Capistrano for deployment
+# Deployment
 # gem 'capistrano-rails', group: :development
 
-# Reduces boot times through caching; required in config/boot.rb
+# Performance
 gem 'bootsnap', '>= 1.1.0', require: false
 
-# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
+# Cross-Origin Resource Sharing (CORS)
 gem 'rack-cors'
 
+# Test and Development Gems
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'figaro'
   gem 'pry'
   gem 'rspec-rails'
 end
 
+# Development Gems
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'pry-rails'
   gem 'rubocop-graphql'
   gem 'rubocop-rails'
@@ -48,6 +55,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+# Test Gems
 group :test do
   gem 'shoulda-matchers'
   gem 'simplecov'
@@ -55,9 +63,15 @@ group :test do
   gem 'webmock'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+# Timezone data for Windows
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Factory Bot for testing
 gem 'factory_bot_rails'
+
+# Fake data generator
 gem 'faker'
+
+# GraphQL and GraphiQL
 gem 'graphiql-rails', group: :development
 gem 'graphql', '~> 2.0'
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

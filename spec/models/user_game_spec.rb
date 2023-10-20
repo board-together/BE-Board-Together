@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe UserGame, type: :model do
+RSpec.describe UserGame do
   describe 'relationships' do
     it { should belong_to :user }
     it { should belong_to :game }

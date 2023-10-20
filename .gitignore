@@ -9,29 +9,29 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*
-/tmp/*
 !/log/.keep
+
+/tmp/*
 !/tmp/.keep
 
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
 
+# Ignore simplecov coverage files
+/coverage
+
+# Ignore Byebug command history file
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-#simplecov
-coverage
-
-#fixture files
-# /spec/fixtures
-
-#individual settings
+# Ignore vscode individual settings
 .vscode/settings.json
 
-#DS_Store
+# Ignore MacOS system files
 .DS_Store
+
 # Ignore application configuration
 /config/application.yml

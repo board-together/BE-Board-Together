@@ -18,7 +18,7 @@ RSpec.describe Mutations::CreateUserGame, type: :request do
         expect(parsed_response[:data][:createUserGame][:user][:userGames]).to be_a(Array)
         expect(parsed_response[:data][:createUserGame][:user][:userGames][0]).to have_key(:game)
         expect(parsed_response[:data][:createUserGame][:user][:userGames][0][:status]).to eq(0)
-        expect(parsed_response[:data][:createUserGame][:user][:userGames][0][:borrower_id]).to eq(nil)
+        expect(parsed_response[:data][:createUserGame][:user][:userGames][0][:borrower_id]).to be_nil
       end
     end
   end
