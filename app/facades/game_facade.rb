@@ -1,10 +1,11 @@
 class GameFacade
   def search(game)
-    search_results = game_service.search(game)[:games]
+    Game.where("name ilike ?", "%#{game}%")
+    # search_results = game_service.search(game)[:games]
 
-    search_results.map do |game_hash|
-      BoardGame.new(game_hash)
-    end
+    # search_results.map do |game_hash|
+    #   BoardGame.new(game_hash)
+    # end
   end
 
   private
